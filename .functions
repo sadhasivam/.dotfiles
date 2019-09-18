@@ -1,0 +1,3 @@
+# shares process using the port 
+# usage: whoseport <port number>
+whoseport() { lsof -i ":$1" | grep LISTEN }
