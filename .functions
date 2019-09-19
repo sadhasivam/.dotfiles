@@ -1,3 +1,18 @@
 # shares process using the port 
 # usage: whoseport <port number>
 whoseport() { lsof -i ":$1" | grep LISTEN }
+
+
+# logs new credentials everyday
+awscreds() {
+    sr_aws_envs=(prod-ro preprod-dev legacy)
+    print $sr_aws_envs
+    for aws_env in $sr_aws_envs; do
+        aws-okta write-to-credentials $aws_env  ~/.aws/credentials
+        print "aws[$aws_env] credentials configured."
+    done
+}
+
+awshelp() {
+    cat ~/dotfiles/awshelp.txt
+}

@@ -1,4 +1,4 @@
-source .functions 
+source ~/dotfiles/.functions 
 
 alias venv="export PYTHONPATH=.; source .venv/bin/activate"
 
@@ -17,6 +17,7 @@ alias gs='git checkout master && git pull sr master --rebase && git push origin 
 # AWS OKTA alias
 alias ppd="source =(aws-okta env preprod-dev)"
 alias pro="source =(aws-okta env prod-ro)"
+alias leg="source =(aws-okta env legacy)"
 
 # Get week number
 alias week='date +%V'
