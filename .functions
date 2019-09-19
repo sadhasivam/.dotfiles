@@ -5,7 +5,7 @@ whoseport() { lsof -i ":$1" | grep LISTEN }
 
 # logs new credentials everyday
 awscreds() {
-    sr_aws_envs=(prod-ro preprod-dev legacy)
+    sr_aws_envs=(prod-ro preprod-dev legacy legacy-dev)
     print $sr_aws_envs
     for aws_env in $sr_aws_envs; do
         aws-okta write-to-credentials $aws_env  ~/.aws/credentials

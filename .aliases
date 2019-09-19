@@ -18,6 +18,7 @@ alias gs='git checkout master && git pull sr master --rebase && git push origin 
 alias ppd="source =(aws-okta env preprod-dev)"
 alias pro="source =(aws-okta env prod-ro)"
 alias leg="source =(aws-okta env legacy)"
+alias legd="source =(aws-okta env legacy-dev)"
 
 # Get week number
 alias week='date +%V'

@@ -1,0 +1,14 @@
+------------------------------------- Aliases ------------------------------------------------- 
+ppd = PreProd development AWS environment login
+pro = Production ReadOnly AWS environment login
+leg = Legacy AWS environemnt
+legd = Legacy-DEV AWS environemnt
+
+localip = returns local ipaddress of the machine
+cleanup = deletes .DS_Store files recursively 
+reload  = reload current shell with redefined SHELL values
+path    = echos verbose $PATH value
+
+------------------------------------- Functions ------------------------------------------------
+awscreds = write all AWS environment credentials
+awshelp = cat this file
