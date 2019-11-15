@@ -6,7 +6,9 @@ whoseport() {
 }
 
 # open visualstudio code
-code () { CODE="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+code () { 
+   VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
+}
 
 # logs new credentials everyday
 awscreds() {
