@@ -5,6 +5,8 @@ whoseport() {
     lsof -i ":$1" | grep LISTEN 
 }
 
+# open visualstudio code
+code () { CODE="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 
 # logs new credentials everyday
 awscreds() {
