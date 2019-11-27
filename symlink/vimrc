@@ -1,0 +1,7 @@
+"turn on line numbers
+set number
+
+" *Search Options*
+" Ignore case when searching unless mixed case is used in search.
+set ignorecase
+set smartcase

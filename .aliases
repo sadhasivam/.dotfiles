@@ -1,5 +1,3 @@
-source ~/dotfiles/.functions 
-
 alias venv="export PYTHONPATH=.; source .venv/bin/activate"
 
 alias ls="la -lah"
@@ -11,8 +9,9 @@ alias ws3='python -m http.server 1234'
 alias ws='python -m SimpleHTTPServer 1234'
 
 # Git
-alias gs='git checkout master && git pull sr master --rebase && git push origin master'
-
+alias gs='git status'
+unalias gcm
+alias gcm="git checkout master | git pull sr master --rebase | git push origin master"
 
 # AWS OKTA alias
 alias ppd="source =(aws-okta env preprod-dev)"
