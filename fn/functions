@@ -35,6 +35,11 @@ docker-clean() {
 }
 
 gitd() {
-  echo "$1"  
-  git branch -D $1  && git push origin --delete $1
+  gitBranchString=$1   
+  gitBranches=("${(@s/,/)gitBranchString}")
+  for gitBranch in $gitBranches; do 
+    echo "deleting.....  $gitBranch"  
+    git branch -D $gitBranch  && git push origin --delete $gitBranch 2>> /dev/null
+    echo 
+  done
 }
