@@ -21,3 +21,7 @@ brew install awscli
 brew install aws-okta
 brew install terraform
 
+# development
+brew install caddy
+# self certificate experiment
+brew install step 

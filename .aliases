@@ -43,3 +43,7 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# npmsr 
+alias npm-sr='npm config set registry https://artifactory.k8s.devops.s-9.us/artifactory/api/npm/npm/'
+alias npm-default='npm config set registry https://registry.npmjs.com/'

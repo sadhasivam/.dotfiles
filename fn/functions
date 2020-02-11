@@ -20,8 +20,8 @@ awscreds() {
     done
 }
 
-awshelp() {
-    cat ~/dotfiles/awshelp.txt
+dhelp() {
+    cat ~/dotfiles/man.md
 }
 
 # docker tools
