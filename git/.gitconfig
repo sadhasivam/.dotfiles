@@ -1,0 +1,20 @@
+[user]
+    name = sadhasivam jayabalaganesan
+    email = sadha@shoprunner.com
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[push]
+    default = current
+[alias]
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[core]
+    autocrlf = input
+    editor = /usr/bin/vim
+[pull]
+    rebase = true
+[url "git@github.com:"]
+    insteadOf = https://github.com
