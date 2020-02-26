@@ -1,31 +1,21 @@
-# Yet Another Dot File Setup
+# Yet Another Dot Files Setup
+Personalized version of dotfiles setup for development protectivity.
 
-Personalized version of dotfiles setup for development protectivity. 
-
-
-## .manual   
-
----
-    ### $R - Aliases ###
----
-
+## .manual
+### $R - Aliases 
 - ppd = PreProd development AWS environment login
 - pro = Production ReadOnly AWS environment login
 - leg = Legacy AWS environemnt
 - legd = Legacy-DEV AWS environemnt
 
----
-    ### Aliases ###
----
+### Aliases 
 - localip = returns local ipaddress of the machine
-- cleanup = deletes .DS_Store files recursively 
-- reload  = reload current shell with redefined SHELL values
+- cleanup = deletes .DS_Store files recursively
+- reload = reload current shell with redefined SHELL values
 - week = get week number
-- path    = echos verbose $PATH value
+- path = echos verbose $PATH value
 
----
-    ### Functions ###
----
+### Functions 
 - awscreds = write all AWS environment credentials
 - dhelp = cat this file
 - whoseport = find out program using the port
@@ -33,14 +23,6 @@ Personalized version of dotfiles setup for development protectivity.
 - docker-clean = clean docker images
 - code = open visual code
 
----
-    ### Setup ###
----
+### Setup 
 - dotstrap.sh - bootstraps dot file
 - install/brew.sh - OSX init script
-
-
-
-
-
-
