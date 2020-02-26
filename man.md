@@ -25,3 +25,9 @@ whoseport = find out program using the port
 gitd = deletes local and remote git repository
 docker-clean = clean docker images
 code = open visual code
+
+---
+    ### Setup ###
+---
+dotstrap.sh - bootstraps dot file
+
