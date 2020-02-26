@@ -1,15 +1,33 @@
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap homebrew/versions
-brew tap homebrew/dupes
-brew update
-brew upgrade
+if ( brew --version ) < /dev/null > /dev/null 2>&1; then
+    echo 'Homebrew is already installed!'
+else
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+fi
+
+if ( brew cask --version; ) < /dev/null > /dev/null 2>&1; then
+    echo 'Caskroom tapped already'
+else
+    brew tap homebrew/cask-cask;
+fi
+
+if ( brew bundle check; ) < /dev/null > /dev/null 2>&1; then
+    echo 'Brewfiles enabled'
+else
+    brew tap Homebrew/bundle;
+    brew bundle;
+fi
+
+brew cleanup;
+brew prune;
+brew doctor;
+
 
 # Programming Languanges
 brew install node nvm
 brew install nvm
 brew install go
 brew install elixir
-brew install adoptopenjdk
+brew cask install adoptopenjdk
 brew install gradle
 
 # Utilities 
