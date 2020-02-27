@@ -23,7 +23,7 @@ brew doctor;
 
 
 # Programming Languanges
-brew install node nvm
+brew install node
 brew install nvm
 brew install go
 brew install elixir

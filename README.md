@@ -1,4 +1,4 @@
-# Yet Another Dot Files Setup
+# DOTSTRAP  
 Personalized version of dotfiles setup for development protectivity.
 
 ## .manual
@@ -14,6 +14,11 @@ Personalized version of dotfiles setup for development protectivity.
 - reload = reload current shell with redefined SHELL values
 - week = get week number
 - path = echos verbose $PATH value
+- npm-sr = sets SR artifactory 
+- npm-default = sets npmregistry 
+- localip = local ipaddress
+- ws3 = server python 3.7 in port 1234
+- ws  = server python 2.7 in port 1234 
 
 ### Functions 
 - awscreds = write all AWS environment credentials
@@ -22,6 +27,7 @@ Personalized version of dotfiles setup for development protectivity.
 - gitd = deletes local and remote git repository
 - docker-clean = clean docker images
 - code = open visual code
+- digga = dig with more useful information
 
 ### Setup 
 - dotstrap.sh - bootstraps dot file
