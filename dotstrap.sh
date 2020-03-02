@@ -1,12 +1,11 @@
 function dotboot() {
-    rm -rf ~/.tmux/tmux.conf && ln symlink/tmux.conf ~/.tmux/tmux.conf
-    rm -rf ~/.vim/.vimrc    && ln symlink/vimrc ~/.vim/.vimrc   
-    rm -rf ~/.npmrc && ln symlink/npmrc ~/.npmrc
+    rm -rf $HOME/.tmux/tmux.conf && ln symlink/tmux.conf $HOME/.tmux/tmux.conf
+    rm -rf $HOME/.vim/.vimrc    && ln symlink/vimrc $HOME/.vim/.vimrc   
+    rm -rf $HOME/.npmrc && ln symlink/npmrc $HOME/.npmrc
 
-    rm -rf ~/.editorconfig
-    
-    rm -rf ~/.gitignore_global && ln git/.gitignore_global ~/.gitignore_global
-    rm -rf ~/.gitconfig && ln git/.gitconfig ~/.gitconfig
+    rm -rf $HOME/.curlrc && ln symlink/curlrc $HOME/.curlrc    
+    rm -rf $HOME/.gitignore_global && ln git/.gitignore_global $HOME/.gitignore_global
+    rm -rf $HOME/.gitconfig && ln git/.gitconfig $HOME/.gitconfig
     # ./install/brew.sh
 }
 

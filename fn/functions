@@ -27,7 +27,7 @@ dhelp() {
 # docker tools
 docker-clean() {
     print "cleaning docker none images "
-    images=$(docker images | grep "<none>" | awk '{print $3}')
+    images=$(docker images --filter "dangling=true" -q --no-trunc)
         if [ -n "$images" ]
     then
         docker rmi -f $images
