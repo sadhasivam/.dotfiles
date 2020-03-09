@@ -136,3 +136,10 @@ export AWS_SESSION_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
 
 export PATH="/usr/local/sbin:$PATH"
+
+# this is for Brew installed Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
