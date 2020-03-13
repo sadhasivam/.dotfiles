@@ -10,7 +10,7 @@ alias ws='python -m SimpleHTTPServer 1234'
 
 # Git
 alias gs='git status'
-unalias gcm
+unalias gcm >/dev/null 2>/dev/null
 alias gcm="git checkout master | git pull sr master --rebase | git push origin master"
 
 # AWS OKTA alias
