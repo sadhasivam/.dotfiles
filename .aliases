@@ -49,3 +49,7 @@ alias npm-default='npm config set registry https://registry.npmjs.com/'
 
 # docker
 alias drm='docker rm -f $(docker ps -a -q)'
+
+
+# sr
+alias sr='cd ~/shoprunner/source.code'
