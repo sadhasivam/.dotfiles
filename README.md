@@ -28,6 +28,7 @@ Personalized version of dotfiles setup for development protectivity.
 - docker-clean = clean docker images
 - code = open visual code
 - digga = dig with more useful information
+- venv  = sets up python virtual environment ( .venv/bin/activiate) & configures PythonPATH to current working directory
 
 ### Setup 
 - dotstrap.sh - bootstraps dot file

@@ -48,3 +48,14 @@ gitd() {
 function digga() {
 	dig +nocmd "$1" any +multiline +noall +answer;
 }
+
+
+# setting up python virtual environment (.venv/bin/activate) 
+# and PYTHONPATH=local directory
+function venv() {
+    if [ -f $(pwd)/.venv/bin/activate ]; then
+        source $(pwd)/.venv/bin/activate
+    fi
+    export PYTHONPATH=$(pwd)
+    echo "set python path to = $PYTHONPATH"
+}

@@ -1,5 +1,3 @@
-alias venv="export PYTHONPATH=.; source .venv/bin/activate"
-
 alias ls="la -lah"
 alias psaux="ps aux"
 
@@ -51,4 +49,3 @@ alias npm-default='npm config set registry https://registry.npmjs.com/'
 
 # docker
 alias drm='docker rm -f $(docker ps -a -q)'
-
