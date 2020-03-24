@@ -59,3 +59,16 @@ function venv() {
     export PYTHONPATH=$(pwd)
     echo "set python path to = $PYTHONPATH"
 }
+
+
+# Ref: https://github.com/AdoptOpenJDK/homebrew-openjdk
+# Usage: jdk 13
+jdk() {
+    version=$1
+    if [ -z "$version" ]
+    then
+        version="13.0.2"
+    fi
+    export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+    java -version
+}

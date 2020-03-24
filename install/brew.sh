@@ -59,3 +59,4 @@ brew install brew-cask
 brew tap caskroom/versions
 
 brew cask install --appdir="/Applications" 
+brew cask install adoptopenjdk
