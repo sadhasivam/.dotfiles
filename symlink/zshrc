@@ -143,3 +143,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+
+# prevent commands from being added to your history by prepending a space to the line.
+setopt HIST_IGNORE_SPACE
