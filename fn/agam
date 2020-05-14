@@ -1,13 +1,15 @@
-dokeymd5() {
-  ssh-keygen -E md5 -lf $HOME/.ssh/do_id_rsa.pub | awk '{print $2}'
+me() {
+   rcfile=$HOME/.sadhasivamrc
+   if [ -f $rcfile ]; then
+      echo "activated $rcfile file"
+      source $rcfile
+   fi
 }
 
-dotf() {
-  DO_SSH_FP=$(eval dokeymd5)
-  terraform $1 \
-        -var "do_token=${DIGITALOCEAN_ACCESS_TOKEN}" \
-        -var "pub_key=$HOME/.ssh/do_id_rsa.pub" \
-        -var "pvt_key=$HOME/.ssh/do_id_rsa" \
-        -var "ssh_fingerprint=$DO_SSH_FP"
+them() {
+  rcfile=$HOME/.zshrc
+  if [ -f $rcfile ]; then
+      echo "activated $rcfile file"
+      source $rcfile
+  fi
 }
-

@@ -93,6 +93,7 @@ plugins=(
   git-extras
   docker
   github
+  hacker-quotes
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -100,6 +101,7 @@ source $HOME/dotfiles/.aliases
 source $HOME/dotfiles/fn/functions
 source $HOME/dotfiles/fn/sr
 source $HOME/dotfiles/fn/agam
+source $HOME/dotfiles/fn/cloud
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

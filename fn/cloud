@@ -1,0 +1,22 @@
+# digital ocean functions
+
+dokeymd5() {
+  ssh-keygen -E md5 -lf $HOME/.ssh/do_id_rsa.pub | awk '{print $2}'
+}
+
+dotf() {
+  DO_SSH_FP=$(eval dokeymd5)
+  terraform $1 \
+        -var "do_token=${DIGITALOCEAN_ACCESS_TOKEN}" \
+        -var "pub_key=$HOME/.ssh/do_id_rsa.pub" \
+        -var "pvt_key=$HOME/.ssh/do_id_rsa" \
+        -var "ssh_fingerprint=$DO_SSH_FP"
+}
+
+# Linode functions
+
+
+# Aws functions
+
+
+# GCP functions
