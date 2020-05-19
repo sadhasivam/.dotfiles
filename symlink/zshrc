@@ -149,3 +149,14 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 # prevent commands from being added to your history by prepending a space to the line.
 setopt HIST_IGNORE_SPACE
+
+# out from (brew install mitmproxy)
+# If you need to have openssl@1.1 first in your PATH run:
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# For compilers to find openssl@1.1 you may need to set:
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# For pkg-config to find openssl@1.1 you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
