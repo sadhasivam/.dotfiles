@@ -93,7 +93,6 @@ plugins=(
   git-extras
   docker
   github
-  hacker-quotes
 )
 
 source $ZSH/oh-my-zsh.sh

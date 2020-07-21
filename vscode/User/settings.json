@@ -50,7 +50,6 @@
         "vs-kubernetes.minikube-path.mac": "/Users/sjayabalaganesan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
     },
     "files.autoSave": "afterDelay",
-    "workbench.colorTheme": "Horizon",
     "ruby.format": "rubocop",
     "python.jediEnabled": false,
     "[jsonc]": {
@@ -96,5 +95,12 @@
     "yaml.schemas": {
     
     },
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
+        ]
+    },
+    "workbench.colorTheme": "Horizon"
 }

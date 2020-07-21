@@ -18,7 +18,6 @@ else
 fi
 
 brew cleanup;
-brew prune;
 brew doctor;
 
 
@@ -32,9 +31,9 @@ brew install gradle
 
 # Utilities 
 brew install zsh
+brew install zsh-syntax-highlighting
 brew install jq
 brew install tree
-brew install tmux
 brew install wifi-password
 
 ## cloud ops
@@ -42,7 +41,8 @@ brew install kubernetes-cli
 brew install kubectl
 brew install awscli
 brew install aws-okta
-brew install terraform
+# brew install terraform
+brew install tfenv
 
 # development
 brew install git
