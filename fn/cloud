@@ -17,6 +17,24 @@ dotf() {
 
 
 # Aws functions
+dlecr() {
+  [ -z "$AWS_ACCOUNT_ID" ] && echo "please set AWS_ACCOUNT_ID env variable"; return;
+  region=${AWS_DEFAULT_REGION:-${AWS_REGION}}
+  [ -z "$region" ] && echo "please set AWS_REGION or AWS_DEFAULT_REGION env variable"; return;
 
+  # AWS CLI version 1 command
+  # docker login \
+  #      --username AWS \
+  #      --password $(eval 'aws ecr get-login --no-include-email --region $region') \
+  #      https://$ACCOUNT_ID.dkr.ecr.$region.amazonaws.com
+
+  # AWS CLI version 2 command
+  docker login \
+        --username AWS \
+        --password $(eval 'aws ecr get-login-password  --region $region') \
+        https://$ACCOUNT_ID.dkr.ecr.$region.amazonaws.com
+
+  echo "docker logged in to elastic container registry for $AWS_ACCOUNT_ID"      
+}
 
 # GCP functions
