@@ -1,106 +1,105 @@
 {
-    "editor.fontFamily": "Jetbrains Mono",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 14,
-    "window.zoomLevel": 2,
-    "editor.minimap.enabled": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.factorypath": true,
-        "**/.project": true,
-        "**/.pyc": true,
-        "**/.settings": true,
-        "**/node_modules": true
-    },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "workbench.iconTheme": "vscode-icons",
-    "go.useLanguageServer": true,
-    "go.languageServerFlags": [
-        "-rpc.trace", // for more detailed debug logging
-        "serve",
-        "--debug=localhost:6060", // to investigate memory usage, see profiles 
-    ],
-    "[go]": {
-        "editor.snippetSuggestions": "none",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-            "source.fixAll.eslint": true
-        }
-    },
-    "gopls": {
-        "usePlaceholders": true, // add parameter placeholders when completing a function
-        "wantCompletionDocumentation": true // for documentation in completion items
-    },
-    "files.eol": "\n", // formatting only supports LF line endings    
-    "vs-kubernetes": {
-        "vs-kubernetes.minikube-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-        "vs-kubernetes.helm-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/helm/darwin-amd64/helm",
-        "vs-kubernetes.draft-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/draft/darwin-amd64/draft",
-        "vs-kubernetes.kubectl-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/kubectl/kubectl",
-        "vs-kubernetes.minikube-path.mac": "/Users/sjayabalaganesan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
-    },
-    "files.autoSave": "afterDelay",
-    "ruby.format": "rubocop",
-    "python.jediEnabled": false,
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "prettier.arrowParens": "always",
-    "javascript.updateImportsOnFileMove.enabled": "never",
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "jshint.enable": false,
-    "prettier.printWidth": 120,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "terraform.languageServer.enabled": true,
-    "terraform.indexing.enabled": false,
-    "typescript.tsserver.log": "verbose",
-    "vsicons.dontShowNewVersionMessage": true,
-    "[ruby]": {
-        "editor.defaultFormatter": "jnbt.vscode-rufo"
-    },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[scss]": {
-        "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
-    },
-    "eslint.alwaysShowStatus": true,
-    "eslint.codeAction.disableRuleComment": {
-    
-    },
-    "[markdown]": {
-    
-    },
-    "json.schemas": [
-    
-    ],
-    "yaml.schemas": {
-    
-    },
-    "extensions.ignoreRecommendations": false,
-    "terraform.languageServer": {
-        "external": true,
-        "args": [
-            "serve"
-        ]
-    },
-    "workbench.colorTheme": "Horizon"
+  "editor.fontFamily": "Jetbrains Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "window.zoomLevel": 2,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.pyc": true,
+    "**/.settings": true,
+    "**/node_modules": true
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "go.useLanguageServer": true,
+  "go.languageServerFlags": [
+    "-rpc.trace", // for more detailed debug logging
+    "serve",
+    "--debug=localhost:6060" // to investigate memory usage, see profiles
+  ],
+  "[go]": {
+    "editor.snippetSuggestions": "none",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll.eslint": true
+    }
+  },
+  "gopls": {
+    "usePlaceholders": true, // add parameter placeholders when completing a function
+    "wantCompletionDocumentation": true // for documentation in completion items
+  },
+  "files.eol": "\n", // formatting only supports LF line endings
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+    "vs-kubernetes.helm-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+    "vs-kubernetes.draft-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/draft/darwin-amd64/draft",
+    "vs-kubernetes.kubectl-path": "/Users/sjayabalaganesan/.vs-kubernetes/tools/kubectl/kubectl",
+    "vs-kubernetes.minikube-path.mac": "/Users/sjayabalaganesan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+  },
+  "files.autoSave": "afterDelay",
+  "ruby.format": "rubocop",
+  "python.jediEnabled": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.arrowParens": "always",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[graphql]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "jshint.enable": false,
+  "prettier.printWidth": 120,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terraform.languageServer.enabled": true,
+  "terraform.indexing.enabled": false,
+  "typescript.tsserver.log": "verbose",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[ruby]": {
+    "editor.defaultFormatter": "jnbt.vscode-rufo"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.codeAction.disableRuleComment": {},
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "json.schemas": [],
+  "yaml.schemas": {},
+  "extensions.ignoreRecommendations": false,
+  "terraform.languageServer": {
+    "external": true,
+    "args": ["serve"]
+  },
+  "python.languageServer": "Microsoft",
+  "workbench.colorTheme": "Horizon"
 }

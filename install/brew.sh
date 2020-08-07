@@ -50,6 +50,8 @@ brew install htop
 brew install nmap
 brew install wget
 brew install caddy
+
+brew install fzf
 # self certificate experiment
 brew install step 
 

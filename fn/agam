@@ -13,3 +13,13 @@ them() {
       source $rcfile
   fi
 }
+
+ww() {
+   if [ -f .terraform-version ]; then
+      tfenv use
+   fi
+   export AWS_PROFILE=ww
+   export AWS_REGION=ap-south-1
+   export TF_VAR_aws_region=$AWS_REGION
+   export TF_VAR_aws_profile=$AWS_PROFILE
+}
