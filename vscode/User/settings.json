@@ -2,7 +2,7 @@
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "editor.minimap.enabled": false,
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -101,5 +101,6 @@
     "args": ["serve"]
   },
   "python.languageServer": "Microsoft",
-  "workbench.colorTheme": "Horizon"
+  "workbench.colorTheme": "Horizon",
+  "workbench.colorCustomizations": {}
 }
