@@ -53,3 +53,9 @@ alias drm='docker rm -f $(docker ps -a -q)'
 
 # sr
 alias sr='cd ~/shoprunner/source.code'
+
+
+# date 
+alias inr='TZ=Asia/Calcutta date'
+alias nyc='TZ=America/New_York date'
+alias utc='TZ=Etc/UTC date'

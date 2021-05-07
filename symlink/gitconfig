@@ -1,6 +1,22 @@
 [user]
     name = sadhasivam jayabalaganesan
     email = sadha@shoprunner.com
+[diff]    
+    colorMoved = true
+    colorMovedWS = allow-indentation-change
+[log]
+    date = local 
+[merge]
+    conflictStyle = diff3
+[rebase]
+    autosquash = true 
+[stash]
+    showPatch = true 
+[tag]
+    sort = version:refname
+[versionsort]
+    suffix = "_BETA"
+    suffix = "_RC"    
 [color]
     branch = auto
     diff = auto
@@ -11,6 +27,9 @@
 [alias]
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    st = status 
+    cw = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD $(1:-$GIT_PREFIX)
+    find = !git ls-files "*/$1"
 [core]
     autocrlf = input
     editor = /usr/bin/vim

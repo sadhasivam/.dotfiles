@@ -2,16 +2,20 @@
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "files.exclude": {
     "**/.classpath": true,
     "**/.factorypath": true,
+    "**/.gradle": true,
+    "**/.idea": true,
     "**/.project": true,
     "**/.pyc": true,
     "**/.settings": true,
+    "**/bin": true,
+    "**/build": true,
     "**/node_modules": true
   },
   "editor.suggestSelection": "first",
@@ -39,7 +43,7 @@
   },
   "gopls": {
     "usePlaceholders": true, // add parameter placeholders when completing a function
-    "wantCompletionDocumentation": true // for documentation in completion items
+    "completionDocumentation": true // for documentation in completion items
   },
   "files.eol": "\n", // formatting only supports LF line endings
   "vs-kubernetes": {
@@ -100,7 +104,29 @@
     "external": true,
     "args": ["serve"]
   },
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Pylance",
   "workbench.colorTheme": "Horizon",
-  "workbench.colorCustomizations": {}
+  "workbench.colorCustomizations": {},
+  "java.project.importOnFirstTimeStartup": "automatic",
+  "editor.largeFileOptimizations": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "go.playground": {
+  
+    "openbrowser": true,
+    "share": true,
+    "run": true
+  },
+  "vsnotes.defaultNotePath": "/Users/sjayabalaganesan/shoprunner/aroo",
+  "java.project.resourceFilters": [
+
+    "bin",
+    "build",
+    "node_modules",
+    ".git"
+  ]
 }
