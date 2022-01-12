@@ -46,6 +46,7 @@ brew 'nvm'
 brew 'yarn'
 brew 'go'
 brew 'elixir'
+brew 'rustup'
 
 cask 'adoptopenjdk'
 
