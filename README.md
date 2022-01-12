@@ -1,17 +1,33 @@
-# DOTSTRAP  
-Personalized version of dotfiles setup for development protectivity.
+# The (.) DOTSTRAP  
+collaborated dotfiles dogma & setup
+
+## .setup 
+Personalized dotflies setup tested only in macOS Monterey
+
+### prerequisite 
+
+- configure git ssh 
+- install git 
+- clone dotfiles repo
+
+### macos setup 
+
+- Run ./dostraph.sh  # bootstraps dot file
 
 ## .manual
+
 ### $R - Aliases 
+
 - ppd = PreProd development AWS environment login
 - pro = Production ReadOnly AWS environment login
 - leg = Legacy AWS environemnt
 - legd = Legacy-DEV AWS environemnt
 
 ### Aliases 
+
 - localip = returns local ipaddress of the machine
 - cleanup = deletes .DS_Store files recursively
-- reload = reload current shell with redefined SHELL values
+- reloadshell = reload current shell with redefined SHELL values
 - week = get week number
 - path = echos verbose $PATH value
 - npm-sr = sets SR artifactory 
@@ -21,6 +37,7 @@ Personalized version of dotfiles setup for development protectivity.
 - ws  = server python 2.7 in port 1234 
 
 ### Functions 
+
 - awscreds = write all AWS environment credentials
 - dhelp = cat this file
 - whoseport = find out program using the port
@@ -30,6 +47,7 @@ Personalized version of dotfiles setup for development protectivity.
 - digga = dig with more useful information
 - venv  = sets up python virtual environment ( .venv/bin/activiate) & configures PythonPATH to current working directory
 
-### Setup 
-- dotstrap.sh - bootstraps dot file
-- install/brew.sh - OSX init script
+### Credits
+
+- Thanks to [@subnixr](https://github.com/subnixr) for [his awesome Zsh theme](https://github.com/subnixr/minimal)!
+- Thanks to [@driesvints](https://github.com/driesvints) for dotfiles pointers

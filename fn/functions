@@ -10,16 +10,6 @@ code () {
    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
 }
 
-# logs new credentials everyday
-awscreds() {
-    sr_aws_envs=(prod-ro preprod-dev legacy-dev)
-    print $sr_aws_envs
-    for aws_env in $sr_aws_envs; do
-        aws-okta write-to-credentials -a 12h -t 12h $aws_env  ~/.aws/credentials
-        print "aws[$aws_env] credentials configured."
-    done
-}
-
 dhelp() {
     cat ~/dotfiles/man.md
 }

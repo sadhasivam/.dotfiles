@@ -3,3 +3,13 @@ function ssh_partner_sftp() {
   SFTP_SERVER=$(host sftp.$PARTNER_CODE.shoprunner.net | tail -n1 | cut -d. -f1)
   ssh $SFTP_SERVER
 }
+
+# logs new credentials everyday
+awscreds() {
+    sr_aws_envs=(prod-ro preprod-dev legacy-dev)
+    print $sr_aws_envs
+    for aws_env in $sr_aws_envs; do
+        aws-okta write-to-credentials -a 12h -t 12h $aws_env  ~/.aws/credentials
+        print "aws[$aws_env] credentials configured."
+    done
+}

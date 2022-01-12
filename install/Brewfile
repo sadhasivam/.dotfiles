@@ -1,0 +1,64 @@
+# Taps
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/bundle'
+tap 'nicoverbruggen/homebrew-cask'
+
+# Utilities
+brew 'zsh-syntax-highlighting'
+brew 'jq'
+brew 'tree' 
+brew 'wifi-password'
+
+# cloud-ops
+
+# Terraform version manager
+brew 'tfenv'
+
+# AWS CLI
+brew 'awscli'
+
+# The Kubernetes command-line tool, kubectl, 
+# allows you to run commands against Kubernetes clusters
+brew 'kubectl'
+
+# local kubernates dev
+brew 'kind'
+
+# Binaries
+brew 'git'
+brew 'htop'
+brew 'nmap'
+brew 'wget'
+brew 'caddy'
+brew 'bash' # Latest Bash version
+brew 'coreutils' # Those that come with macOS are outdated
+brew 'ffmpeg'
+brew 'gnupg'
+brew 'grep'
+brew 'svn' # to install fonts
+
+# Development
+brew 'node'
+brew 'nvm'
+brew 'yarn'
+brew 'go'
+brew 'elixir'
+
+cask 'adoptopenjdk'
+
+# Apps
+cask 'caffeine'
+cask 'docker'
+cask 'visual-studio-code'
+cask 'qlmarkdown'
+
+# Fonts
+cask 'font-lato'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
