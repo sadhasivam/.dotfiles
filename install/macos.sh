@@ -33,7 +33,7 @@ else
     brew bundle --file $DOTFILES/install/Brewfile
 fi
 
-rm -rf $HOME/.vim/.vimrc    && ln $DOTFILES/symlink/vimrc $HOME/.vim/.vimrc   
+rm -rf $HOME/.vim/ && mkdir $HOME/.vim/  && ln $DOTFILES/symlink/vimrc $HOME/.vim/.vimrc   
 rm -rf $HOME/.npmrc && ln $DOTFILES/symlink/npmrc $HOME/.npmrc
 
 rm -rf $HOME/.curlrc && ln $DOTFILES/symlink/curlrc $HOME/.curlrc    
