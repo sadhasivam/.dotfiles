@@ -46,7 +46,7 @@ brew 'nvm'
 brew 'yarn'
 brew 'go'
 brew 'elixir'
-brew 'rustup'
+brew 'rustup-init'
 
 cask 'adoptopenjdk'
 
@@ -64,3 +64,6 @@ cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
+
+# conferencing
+# cask 'zoom'
