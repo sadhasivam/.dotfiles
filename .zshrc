@@ -134,3 +134,25 @@ source $DOTFILES/fn/functions
 source $DOTFILES/fn/sr
 source $DOTFILES/fn/agam
 source $DOTFILES/fn/cloud
+
+if test ! $(which zsh); then
+  mkdir $HOME/.nvm
+fi
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/etc/bash_completion" ] && . "$NVM_DIR/etc/bash_completion"  # This loads nvm bash_completion
+
+# prevent commands from being added to your history by prepending a space to the line.
+setopt HIST_IGNORE_SPACE
+
+#OktaAWSCLI
+if [[ -f "$HOME/.okta/bash_functions" ]]; then
+    . "$HOME/.okta/bash_functions"
+fi
+if [[ -d "$HOME/.okta/bin" && ":$PATH:" != *":$HOME/.okta/bin:"* ]]; then
+    PATH="$HOME/.okta/bin:$PATH"
+fi
+
+export AWS_SESSION_TTL=12h
+export AWS_ASSUME_ROLE_TTL=12h
