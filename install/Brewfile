@@ -39,6 +39,8 @@ brew 'ffmpeg'
 brew 'gnupg'
 brew 'grep'
 brew 'svn' # to install fonts
+brew 'mkcert'
+brew 'nss' # for firefox
 
 # Development
 brew 'node'
