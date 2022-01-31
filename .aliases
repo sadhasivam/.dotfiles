@@ -63,3 +63,6 @@ alias drm='docker rm -f $(docker ps -a -q)'
 alias inr='TZ=Asia/Calcutta date'
 alias nyc='TZ=America/New_York date'
 alias utc='TZ=Etc/UTC date'
+
+# tailscale
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
