@@ -23,6 +23,11 @@ brew 'aws-okta'
 # The Kubernetes command-line tool, kubectl, 
 # allows you to run commands against Kubernetes clusters
 brew 'kubectl'
+# cask 'docker' # This will install Docker & Docker Desktop
+brew 'hyperkit'
+brew 'docker' # This will install docker cli alone
+brew 'minikube'
+
 
 # local kubernates dev
 brew 'kind'
@@ -54,7 +59,6 @@ cask 'adoptopenjdk'
 
 # Apps
 cask 'caffeine'
-cask 'docker'
 cask 'visual-studio-code'
 cask 'qlmarkdown'
 
