@@ -66,3 +66,7 @@ alias utc='TZ=Etc/UTC date'
 
 # tailscale
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+# minikube
+alias mk='minikube'
+alias k="minikube kubectl --"

@@ -84,6 +84,10 @@ plugins=(
   git
   docker
   github
+  brew
+  node
+  npm
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
