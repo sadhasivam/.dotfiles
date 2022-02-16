@@ -158,5 +158,8 @@ if [[ -d "$HOME/.okta/bin" && ":$PATH:" != *":$HOME/.okta/bin:"* ]]; then
     PATH="$HOME/.okta/bin:$PATH"
 fi
 
+# GoLang
+export GO_HOME="$HOME/go"
+export PATH=$PATH:$GO_HOME/bin
 export AWS_SESSION_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
