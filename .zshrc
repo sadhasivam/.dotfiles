@@ -163,3 +163,7 @@ export GO_HOME="$HOME/go"
 export PATH=$PATH:$GO_HOME/bin
 export AWS_SESSION_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
+
+# Java 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
