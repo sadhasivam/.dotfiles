@@ -40,4 +40,6 @@ rm -rf $HOME/.curlrc && ln $DOTFILES/symlink/curlrc $HOME/.curlrc
 rm -rf $HOME/.gitignore_global && ln $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
 rm -rf $HOME/.gitconfig && ln $DOTFILES/git/.gitconfig $HOME/.gitconfig
 
+# Remove outdated versions from the cellar.
+brew cleanup
 echo "Finished dotstrapping...."

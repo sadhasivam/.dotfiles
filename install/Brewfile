@@ -59,6 +59,7 @@ brew 'rustup-init'
 
 cask 'adoptopenjdk'
 brew 'jenv'
+brew 'gradle'
 
 # Apps
 cask 'caffeine'
