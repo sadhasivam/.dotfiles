@@ -4,6 +4,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
+tap 'clojure/tools'
 
 # Utilities
 brew 'zsh-syntax-highlighting'
@@ -30,6 +31,7 @@ brew 'minikube'
 brew 'docker-compose'
 brew 'podman'
 
+brew 'clojure/tools/clojure'
 
 # local kubernates dev
 brew 'kind'
