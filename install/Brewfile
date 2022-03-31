@@ -5,12 +5,16 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap 'clojure/tools'
+tap 'heroku/brew'
+
 
 # Utilities
 brew 'zsh-syntax-highlighting'
 brew 'jq'
 brew 'tree' 
 brew 'wifi-password'
+cask 'ngrok' 
+brew 'heroku'
 
 # cloud-ops
 
@@ -30,8 +34,6 @@ brew 'docker' # This will install docker cli alone
 brew 'minikube'
 brew 'docker-compose'
 brew 'podman'
-
-brew 'clojure/tools/clojure'
 
 # local kubernates dev
 brew 'kind'
