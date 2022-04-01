@@ -15,6 +15,9 @@ brew 'tree'
 brew 'wifi-password'
 cask 'ngrok' 
 brew 'heroku'
+brew 'pass'
+brew 'gpg'
+brew 'git-crypt'
 
 # cloud-ops
 
