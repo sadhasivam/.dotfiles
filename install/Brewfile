@@ -46,6 +46,7 @@ brew 'git'
 brew 'htop'
 brew 'nmap'
 brew 'wget'
+brew 'mitmproxy'
 brew 'caddy'
 brew 'bash' # Latest Bash version
 brew 'coreutils' # Those that come with macOS are outdated
