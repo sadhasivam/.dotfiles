@@ -167,3 +167,8 @@ export AWS_ASSUME_ROLE_TTL=12h
 # Java 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# Airflow
+if [[ -d $HOME/.airflow ]]; then
+  export AIRFLOW_HOME=~/airflow
+fi
