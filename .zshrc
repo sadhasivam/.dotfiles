@@ -139,6 +139,10 @@ source $DOTFILES/fn/sr
 source $DOTFILES/fn/agam
 source $DOTFILES/fn/cloud
 
+if [ -f $DOTFILES/.aliases.work ]; then
+  source $DOTFILES/.aliases.work
+fi
+
 if test ! $(which zsh); then
   mkdir $HOME/.nvm
 fi
@@ -172,3 +176,10 @@ eval "$(jenv init -)"
 if [[ -d $HOME/.airflow ]]; then
   export AIRFLOW_HOME=~/airflow
 fi
+
+# bun completions
+[ -s "/Users/sjayabalaganesan/.bun/_bun" ] && source "/Users/sjayabalaganesan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

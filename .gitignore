@@ -16,3 +16,6 @@ Thumbs.db
 # custom exclusions
 vscode/User/globalStorage
 vscode/User/workspaceStorage
+
+# ignore secure files
+.aliases.work
