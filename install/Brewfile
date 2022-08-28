@@ -27,6 +27,7 @@ brew 'tfenv'
 # AWS CLI
 brew 'awscli'
 brew 'aws-okta'
+brew 'azure-cli'
 
 # The Kubernetes command-line tool, kubectl, 
 # allows you to run commands against Kubernetes clusters
