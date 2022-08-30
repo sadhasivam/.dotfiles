@@ -183,3 +183,6 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export KUBECTX_CURRENT_FGCOLOR=$(tput setaf 6) # blue text
+export KUBECTX_CURRENT_BGCOLOR=$(tput setab 7) # white background

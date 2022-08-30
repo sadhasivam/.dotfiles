@@ -69,4 +69,7 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # minikube
 alias mk='minikube'
-alias k="minikube kubectl --"
+# alias k="minikube kubectl --"
+alias k='kubectl'
+alias kx='kubectx'
+alias kns='kubens'

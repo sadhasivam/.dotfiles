@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "32d54f0278fe86959c324eacff2350ba96bcdc81"
+        "revision": "63ae652861e06f4b1a7358538ad54bd60c6bb93c"
       },
       "homebrew/cask-fonts": {
-        "revision": "f618f5a9de561436ad1a68bf731117c09a212b6a"
+        "revision": "c8a0b4b5a012c1254fc5099f7e697269b1b5c855"
       },
       "homebrew/cask-versions": {
-        "revision": "c5ff83334ddbbec15fa748790f5c451868a0dc8c"
+        "revision": "d3b9d0fdcf83f1f87c3ad64a852323a6e687c5f7"
       },
       "homebrew/bundle": {
         "revision": "9fffe077f1a5a722ed5bd26a87ed622e8cb64e0c"
@@ -1466,11 +1466,25 @@
             }
           }
         }
+      },
+      "kubectx": {
+        "version": "0.9.4",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "all": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/kubectx/blobs/sha256:56fca18baee3ff65f4e6ca1491b515f46bcb61c3d184bc68c77c1b06e2e32cfb",
+              "sha256": "56fca18baee3ff65f4e6ca1491b515f46bcb61c3d184bc68c77c1b06e2e32cfb"
+            }
+          }
+        }
       }
     },
     "cask": {
       "ngrok": {
-        "version": "3.0.7,j2rZLxwzCw2,a",
+        "version": "3.0.7,3qk13uQpAwh,a",
         "options": {
           "full_name": "ngrok"
         }
@@ -1547,8 +1561,8 @@
     "macos": {
       "monterey": {
         "HOMEBREW_VERSION": "3.5.10",
-        "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "9366878a7daa98dd0fc494e66edfe41c228a8149",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "12a796617c3233fcbf2daa2aba483eec1304eb86",
         "CLT": "13.4.0.0.1.1651278267",
         "Xcode": "13.4.1",
         "macOS": "12.5.1"
