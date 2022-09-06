@@ -23,6 +23,7 @@ brew 'git-crypt'
 
 # Terraform version manager
 brew 'tfenv'
+brew 'tfsec'
 
 # AWS CLI
 brew 'awscli'
