@@ -60,6 +60,7 @@ brew 'grep'
 brew 'svn' # to install fonts
 brew 'mkcert'
 brew 'nss' # for firefox
+brew 'difftastic'
 
 # Development
 brew 'node'

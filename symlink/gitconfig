@@ -4,6 +4,14 @@
 [diff]    
     colorMoved = true
     colorMovedWS = allow-indentation-change
+    tool = difftastic
+    
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"    
+
 [log]
     date = local 
 [merge]
@@ -63,3 +71,6 @@
 [init]
     # Initialize a new repository with a default .gitignore file. and default Branch name to main
     defaultBranch = main
+    
+[pull]
+	rebase = true
