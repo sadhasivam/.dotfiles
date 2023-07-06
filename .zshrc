@@ -182,3 +182,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export KUBECTX_CURRENT_FGCOLOR=$(tput setaf 6) # blue text
 export KUBECTX_CURRENT_BGCOLOR=$(tput setab 7) # white background
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

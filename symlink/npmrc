@@ -1,8 +1,1 @@
-ignore-scripts=false
-registry=https://registry.npmjs.com/
-init-author-name=sadhasivam jayabalaganesan
-init-author-email=sadha@shoprunner.com
-init-license=MIT
-init-author-url=https://github.com/sadhasivam
-init-version=0.0.1-beta
-loglevel=warn
+
