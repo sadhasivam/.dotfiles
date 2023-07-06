@@ -1,75 +1,93 @@
 # Shortcuts
-# Reload the shell (i.e. invoke as a login shell)
+
+## Reload the shell (i.e. invoke as a login shell)
+
 alias reloadshell="exec ${SHELL} -l"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 
-# Directories
+## Directories
+
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias sites="cd $HOME/Sites"
 
-# JS
+## JS
+
 alias nstrap="rm -rf node_modules/ package-lock.json && npm install"
 alias watch="npm run watch"
 
 alias ls="la -lah"
 alias psaux="ps aux"
 
-# alias awsd='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}" -v "$(pwd):/project" mesosphere/aws-cli'
-# alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -v "$(pwd):/project" mesosphere/aws-cli'
 alias ws3='python3 -m http.server 1234'
 alias ws='python -m SimpleHTTPServer 1234'
 
-# Git
+## Git
+
 alias gst='git status'
 unalias gcm >/dev/null 2>/dev/null
 
-# AWS OKTA alias
+## AWS OKTA alias
+
 alias ppd="source =(aws-okta env preprod-dev)"
 alias pro="source =(aws-okta env prod-ro)"
-# alias leg="source =(aws-okta env legacy)"
+
+## alias leg="source =(aws-okta env legacy)"
+
 alias legd="source =(aws-okta env legacy-dev)"
 
-# Get week number
+## Get week number
+
 alias week='date +%V'
 
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+## Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
-# IP Addresses
+## IP Addresses
+
 alias localip="ipconfig getifaddr en0"
 
-# Recursively delete `.DS_Store` files
+## Recursively delete `.DS_Store` files
+
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
+## Empty the Trash on all mounted volumes and the main HDD. Also, clear Apple’s System Logs to improve shell startup speed Finally, clear download history from quarantine. https://mths.be/bum
+
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-# Print each PATH entry on a separate line
+## Print each PATH entry on a separate line
+
 alias path='echo -e ${PATH//:/\\n}'
 
-# npmsr
+## npmsr
+
 alias npm-sr='npm config set registry https://artifactory.k8s.devops.s-9.us/artifactory/api/npm/npm/'
 alias npm-default='npm config set registry https://registry.npmjs.com/'
 
-# docker
+## docker
+
 alias drm='docker rm -f $(docker ps -a -q)'
 
-# date
+## date
+
 alias inr='TZ=Asia/Calcutta date'
 alias nyc='TZ=America/New_York date'
 alias utc='TZ=Etc/UTC date'
 
-# tailscale
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+## tailscale
 
-# minikube
+alias ts="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+## kubernates
+
 alias mk='minikube'
-# alias k="minikube kubectl --"
 alias k='kubectl'
 alias kx='kubectx'
 alias kns='kubens'
+
+## Azure
+
+alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -r '.[] | [.name, .tenantId] | @tsv'"
