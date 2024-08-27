@@ -186,3 +186,10 @@ export KUBECTX_CURRENT_BGCOLOR=$(tput setab 7) # white background
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"

@@ -69,6 +69,7 @@ brew 'yarn'
 brew 'go'
 brew 'elixir'
 brew 'rustup-init'
+brew 'pyenv'
 
 cask 'adoptopenjdk'
 brew 'jenv'

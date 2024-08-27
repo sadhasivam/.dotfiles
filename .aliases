@@ -29,14 +29,13 @@ alias ws='python -m SimpleHTTPServer 1234'
 alias gst='git status'
 unalias gcm >/dev/null 2>/dev/null
 
-## AWS OKTA alias
-
-alias ppd="source =(aws-okta env preprod-dev)"
-alias pro="source =(aws-okta env prod-ro)"
-
-## alias leg="source =(aws-okta env legacy)"
-
-alias legd="source =(aws-okta env legacy-dev)"
+## AWS gimme-creds
+export AWS_DEFAULT_REGION=us-east-1
+alias pro="export AWS_PROFILE=\"prd-OktaReadOnlyRole\""
+alias legd="export AWS_PROFILE=\"legacy-OktaDeveloperAccess\""
+alias ppd="export AWS_PROFILE=\"preprod-OktaDeveloperAccess\""
+alias sd="export AWS_PROFILE=\"sandbox-OktaDeveloperAccess\""
+alias dro="export AWS_PROFILE=\"databricks-OktaReadOnlyRole\""
 
 ## Get week number
 
@@ -90,4 +89,4 @@ alias kns='kubens'
 
 ## Azure
 
-alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -r '.[] | [.name, .tenantId] | @tsv'"
+alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -r '.[] | [.name, .id] | @tsv'"
