@@ -1,26 +1,39 @@
-function toon {
-  echo -n "சதாசிவம் 🍀 "
+# ~/.zsh-theme — FedEx Style Prompt
+
+########################################
+# Custom Identity
+########################################
+function nameplate() {
+  echo -n "%F{93}சதாசிவம்\u200D🚚%f"  # FedEx Purple name
 }
 
-# Must use Powerline font, for \uE0A0 to render.
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+########################################
+# Git Prompt Symbols (requires Powerline font for \uE0A0)
+########################################
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %F{208}\uE0A0 "   # Orange repo icon
+ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}!"              # Red for dirty
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{green}?"        # Green for untracked
+ZSH_THEME_GIT_PROMPT_CLEAN="%f"                    # Clean = no extra symbol
 
-ZSH_THEME_RUBY_PROMPT_PREFIX="%{$fg_bold[red]%}‹"
-ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
+########################################
+# Ruby Prompt (right-side)
+########################################
+ZSH_THEME_RUBY_PROMPT_PREFIX="%F{208}‹"            # Orange angle
+ZSH_THEME_RUBY_PROMPT_SUFFIX="›%f"
 
+########################################
+# Prompt Substitution
+########################################
 setopt prompt_subst
-PROMPT='
-%{$fg_bold[magenta]%}$(toon)%{$reset_color%}%~/ %{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}$(git_prompt_info) ⌚ %{$fg_bold[red]%}%*%{$reset_color%}
+
+########################################
+# PROMPT
+########################################
+PROMPT=$'
+%F{93}$(nameplate)%f %F{white}%~%f $(git_prompt_info) \
+⌚ %F{208}%*%f
 $ '
 
 RPROMPT='$(ruby_prompt_info)'
-
-
-
-# PROMPT='%{$fg[magenta]%}$(toon)%{$reset_color%} %~/ %{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}'
-
 autoload -U add-zsh-hook
