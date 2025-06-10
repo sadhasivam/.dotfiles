@@ -1,12 +1,12 @@
-# shares process using the port 
+# shares process using the port
 # usage: whoseport <port number>
-whoseport() { 
+whoseport() {
     echo "checking port[$1] is free for use"
-    lsof -i ":$1" | grep LISTEN 
+    lsof -i ":$1" | grep LISTEN
 }
 
 # open visualstudio code
-code () { 
+code () {
    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
 }
 
@@ -25,12 +25,12 @@ docker-clean() {
 }
 
 gitd() {
-  gitBranchString=$1   
+  gitBranchString=$1
   gitBranches=("${(@s/,/)gitBranchString}")
-  for gitBranch in $gitBranches; do 
-    echo "deleting.....  $gitBranch"  
+  for gitBranch in $gitBranches; do
+    echo "deleting.....  $gitBranch"
     git branch -D $gitBranch  && git push origin --delete $gitBranch 2>> /dev/null
-    echo 
+    echo
   done
 }
 
@@ -40,7 +40,7 @@ function digga() {
 }
 
 
-# setting up python virtual environment (.venv/bin/activate) 
+# setting up python virtual environment (.venv/bin/activate)
 # and PYTHONPATH=local directory
 function venv() {
     if [ -f $(pwd)/.venv/bin/activate ]; then
@@ -51,14 +51,35 @@ function venv() {
 }
 
 
-# Ref: https://github.com/AdoptOpenJDK/homebrew-openjdk
-# Usage: jdk 13
-jdk() {
-    version=$1
-    if [ -z "$version" ]
-    then
-        version="13.0.2"
-    fi
-    export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-    java -version
+# `tre` function: list tree with hidden files, color, dirs first,
+# ignore common directories, pipe through pager with color/line numbers,
+# allow overrides via environment variables.
+
+function trex() {
+  # Ensure 'tree' is installed
+  if ! command -v tree >/dev/null 2>&1; then
+    echo "tre: 'tree' command not found. Please install 'tree'." >&2
+    return 1
+  fi
+
+  # Determine pager: allow override via $PAGER; default to 'less'
+  local pager="${PAGER:-less}"
+  if ! command -v "${pager%% *}" >/dev/null 2>&1; then
+    echo "tre: pager '$pager' not found. Install or set PAGER to a valid pager." >&2
+    return 1
+  fi
+
+  # Extended default ignore patterns; override via TRE_IGNORE environment variable if set.
+  # Patterns separated by '|' as per tree -I syntax.
+  local default_ignore=".git|node_modules|bower_components|__pycache__|*.pyc|.DS_Store|.venv|venv|dist|build|target|.idea|.vscode|.pytest_cache|.mypy_cache|.cache|coverage|*.class|*.o|*.obj|*.so|*.dll|vendor"
+  local ignore_patterns="${TRE_IGNORE:-$default_ignore}"
+
+  # Build tree command arguments
+  local tree_args=(tree -aC --dirsfirst -I "$ignore_patterns")
+  tree_args+=("$@")
+
+  # Pager flags; override via TRE_PAGER_FLAGS if needed
+  local pager_flags="${TRE_PAGER_FLAGS:--FRNX}"
+
+  "${tree_args[@]}" 2>&1 | "$pager" $pager_flags
 }

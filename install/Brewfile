@@ -1,93 +1,66 @@
-# Taps
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-tap 'homebrew/bundle'
-tap 'nicoverbruggen/homebrew-cask'
-tap 'clojure/tools'
-tap 'heroku/brew'
+# === Homebrew Taps ===
+# (Add taps here if needed in future, e.g., for fonts or alternate repositories)
 
-
-# Utilities
+# === Shell & Terminal Utilities ===
 brew 'zsh-syntax-highlighting'
-brew 'jq'
-brew 'tree' 
-brew 'wifi-password'
-cask 'ngrok' 
-brew 'heroku'
-brew 'pass'
-brew 'gpg'
-brew 'git-crypt'
-
-# cloud-ops
-
-# Terraform version manager
-brew 'tfenv'
-brew 'tfsec'
-
-# AWS CLI
-brew 'awscli'
-brew 'aws-okta'
-brew 'azure-cli'
-
-# The Kubernetes command-line tool, kubectl, 
-# allows you to run commands against Kubernetes clusters
-brew 'kubectl'
-brew 'kubectx'
-
-# cask 'docker' # This will install Docker & Docker Desktop
-brew 'hyperkit'
-brew 'docker' # This will install docker cli alone
-brew 'minikube'
-brew 'docker-compose'
-brew 'podman'
-
-# local kubernates dev
-brew 'kind'
-
-# Binaries
-brew 'git'
+brew 'bash'                # Latest Bash version
+brew 'coreutils'           # GNU core utilities, newer than macOS default
+brew 'grep'
+brew 'tree'
 brew 'htop'
 brew 'nmap'
 brew 'wget'
-brew 'mitmproxy'
-brew 'caddy'
-brew 'bash' # Latest Bash version
-brew 'coreutils' # Those that come with macOS are outdated
-brew 'ffmpeg'
+cask 'mitmproxy'
+
+# === Secrets & Encryption ===
+brew 'pass'
+brew 'gpg'
 brew 'gnupg'
-brew 'grep'
-brew 'svn' # to install fonts
-brew 'mkcert'
-brew 'nss' # for firefox
-brew 'difftastic'
+brew 'git-crypt'
 
-# Development
-brew 'node'
-brew 'nvm'
-brew 'yarn'
+# === Networking / Certs ===
+brew 'mkcert'              # Locally trusted development certificates
+brew 'nss'                 # Needed for Firefox with mkcert
+brew 'wifi-password'       # Quickly retrieve saved Wi-Fi passwords
+
+# === Dev Tools: Git & VCS ===
+brew 'git'
+brew 'svn'                 # Required by some font installers
+brew 'jq'                  # JSON processor
+
+# === Cloud CLI Tools ===
+brew 'awscli'
+# brew 'aws-okta'            # AWS + Okta SSO integration
+brew 'azure-cli'
+cask 'orbstack'            # Lightweight Docker Desktop replacement
+brew 'kubectl'             # K8s CLI
+brew 'kubectx'             # Switch between K8s contexts/namespaces easily
+
+# === Terraform & IaC Toolchain ===
+brew 'tfenv'               # Terraform version manager
+brew 'tfsec'               # Security scanner for Terraform
+brew 'checkov'             # IaC static analysis
+brew 'tflint'              # Terraform linter
+brew 'infracost'           # Cost estimation for Terraform plans
+brew 'terrascan'           # Policy as code & security scanning
+brew 'graphviz'            # Used with terraform graph
+brew 'terraform-docs'      # Generate Terraform modules documentation in various formats
+
+# Optional Terraform Tools
+# brew 'blast-radius'      # Visualize Terraform graphs (interactive)
+# brew 'sops'              # Secrets management
+# brew 'age'               # Modern encryption tool for use with sops
+
+# === Programming Languages & Build Tools ===
 brew 'go'
-brew 'elixir'
 brew 'rustup-init'
-brew 'pyenv'
-
-cask 'adoptopenjdk'
-brew 'jenv'
+brew 'uv'                  # Python package manager (faster than pip)
+brew 'jenv'                # Java version manager
 brew 'gradle'
+brew 'maven'
 
-# Apps
-cask 'caffeine'
-cask 'visual-studio-code'
-cask 'qlmarkdown'
+# cask 'openjdk@21'          # Java JDK 21 via Cask
 
-# Fonts
-cask 'font-lato'
-cask 'font-open-sans'
-cask 'font-roboto'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
-
-# conferencing
-# cask 'zoom'
+# === Media / Misc ===
+brew 'ffmpeg'
+brew 'caddy'               # HTTP server with automatic HTTPS

@@ -1,76 +1,27 @@
 [user]
     name = sadhasivam jayabalaganesan
-    email = sadha@shoprunner.com
-[diff]    
-    colorMoved = true
-    colorMovedWS = allow-indentation-change
-    tool = difftastic
-    
-[difftool]
-    prompt = false
+    email = sadha.jayabalaganesan@fedex.com
 
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"    
-
-[log]
-    date = local 
-[merge]
-    conflictStyle = diff3
-[rebase]
-    autosquash = true 
-[stash]
-    showPatch = true 
-[tag]
-    sort = version:refname
-[versionsort]
-    suffix = "_BETA"
-    suffix = "_RC"    
 [color]
     branch = auto
     diff = auto
     interactive = auto
     status = auto
+
 [push]
     default = current
 
 [alias]
-    
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    
-    cw = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD $(1:-$GIT_PREFIX)
-    
-    find = !git ls-files "*/$1"
 
-    # show verbose output about tags, branches or remotes
-    tags = tag -l 
-    branches = branch --all
-    remotes = remote --verbose
-
-	# Remove branches that have already been merged with main.
-	# a.k.a. ‘delete merged’
-	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"    
-
-	# List contributors with number of commits.
-	contrib = shortlog --summary --numbered
-
-	# View the current working tree status using the short format.
-    s = status -s
 [core]
     autocrlf = input
     editor = /usr/bin/vim
+    excludesfile = ~/.gitignore_global
+
 [pull]
     rebase = true
+
 [url "git@github.com:"]
     insteadOf = https://github.com
-
-[branch]
-    # Show most recently changed branches first.
-    sort = -commiterdate
-
-[init]
-    # Initialize a new repository with a default .gitignore file. and default Branch name to main
-    defaultBranch = main
-    
-[pull]
-	rebase = true
