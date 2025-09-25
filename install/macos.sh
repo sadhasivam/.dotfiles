@@ -61,6 +61,19 @@ link_file "$DOTFILES/symlink/gitignore_global" "$HOME/.gitignore_global"
 link_file "$DOTFILES/symlink/gitconfig" "$HOME/.gitconfig"
 mkdir -p "$HOME/.vim" && link_file "$DOTFILES/symlink/vimrc" "$HOME/.vim/.vimrc"
 
+VSCODE_PATH="$HOME/Library/Application Support/Code/User"
+
+# Check if VS Code is installed
+if [ -d "$VSCODE_PATH" ]; then
+  echo "VS Code detected ✅"
+  echo "Linking settings.json from dotfiles..."
+
+  # Symlink (force replace existing file with -sf)
+  ln -sf "$DOTFILES/ide/vscode/settings.json" "$VSCODE_PATH/settings.json"
+else
+  echo "VS Code not installed ❌ - skipping symlink"
+fi
+
 # === 5. Final Touches ===
 echo "⬆️ Upgrading all Brew packages..."
 brew upgrade

@@ -58,6 +58,7 @@ brew 'uv'                  # Python package manager (faster than pip)
 brew 'jenv'                # Java version manager
 brew 'gradle'
 brew 'maven'
+brew 'volta'               # JavaScript Tool Manager
 
 # cask 'openjdk@21'          # Java JDK 21 via Cask
 

@@ -64,3 +64,19 @@ export AWS_ASSUME_ROLE_TTL=12h
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+
+# NodeJS
+export VOLTA_HOME="$HOME/.volta"
+PATH="$VOLTA_HOME/bin:$PATH:.:"
+
+
+
+export PATH
+
+# pnpm
+export PNPM_HOME="/Users/sadhasivam/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
