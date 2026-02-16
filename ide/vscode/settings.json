@@ -5,21 +5,21 @@
   // ========== Visuals & Editor ==========
   "editor.formatOnSave": true,
   "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 16,                   // comfortable base, raise to 17 on 27"+ monitors
+  "editor.fontSize": 16, // comfortable base, raise to 17 on 27"+ monitors
   "editor.lineHeight": 1.5,
   "editor.fontLigatures": true,
   "editor.fontWeight": "normal",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.minimap.enabled": false,
-  "editor.guides.bracketPairs": "active",  // highlight active bracket pair
-  "editor.guides.indentation": true,       // subtle indent guides for structure
+  "editor.guides.bracketPairs": "active", // highlight active bracket pair
+  "editor.guides.indentation": true, // subtle indent guides for structure
   "editor.renderWhitespace": "boundary",
-  "editor.stickyScroll.enabled": true,     // keep function/class headers visible
-  "editor.hover.sticky": true,             // hover docs stay open
+  "editor.stickyScroll.enabled": true, // keep function/class headers visible
+  "editor.hover.sticky": true, // hover docs stay open
   "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.multiCursorModifier": "ctrlCmd", // Cmd+Click for multicursors on Mac
   "editor.suggestSelection": "recentlyUsedByPrefix", // smarter autocompletion
-  "editor.inlineSuggest.enabled": true,    // ghost text suggestions (AI/IntelliCode)
+  "editor.inlineSuggest.enabled": true, // ghost text suggestions (AI/IntelliCode)
   "editor.tabSize": 2,
   "editor.unicodeHighlight.invisibleCharacters": false,
 
@@ -27,7 +27,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "never",
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "explicit",
   },
 
   // ========== UI / Theme ==========
@@ -43,7 +43,7 @@
   "workbench.editor.tabActionLocation": "left",
   "workbench.sideBar.location": "left",
   "workbench.tree.expandMode": "singleClick",
-  "workbench.tree.indent": 12,             // slightly wider for clarity
+  "workbench.tree.indent": 12, // slightly wider for clarity
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.value": 9,
@@ -57,7 +57,7 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
 
   // ========== Explorer & Files ==========
-  "explorer.confirmDelete": true,          // safer than false
+  "explorer.confirmDelete": true, // safer than false
   "explorer.confirmDragAndDrop": false,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
@@ -98,6 +98,7 @@
     "**/temp": true,
     "**/yarn.lock": true,
     "**/CHANGELOG*": true,
-    "**/LICENSE*": true
-  }
+    "**/LICENSE*": true,
+  },
+  "claudeCode.preferredLocation": "panel",
 }

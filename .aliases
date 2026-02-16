@@ -18,11 +18,21 @@ alias sites="cd $HOME/Sites"
 alias nstrap="rm -rf node_modules/ package-lock.json && npm install"
 alias watch="npm run watch"
 
-alias ls="la -lah"
-alias psaux="ps aux"
+# Modern CLI tools (will fallback to standard commands if not installed)
+if command -v eza &> /dev/null; then
+  alias ls='eza -lah --icons --git'
+  alias la='eza -lah --icons --git'
+  alias lt='eza --tree --level=2 --icons --git'
+else
+  alias ls="la -lah"
+fi
 
-alias ws3='python3 -m http.server 1234'
-alias ws='python -m SimpleHTTPServer 1234'
+if command -v bat &> /dev/null; then
+  alias cat='bat --style=auto'
+fi
+
+alias psaux="ps aux"
+alias ws='python3 -m http.server 1234'
 
 ## Git
 
@@ -41,9 +51,9 @@ alias dro="export AWS_PROFILE=\"databricks-OktaReadOnlyRole\""
 
 alias week='date +%V'
 
-## Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+## Update Homebrew packages and mise-managed runtimes
 
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update='brew update && brew upgrade && brew cleanup && mise upgrade'
 
 ## IP Addresses
 
