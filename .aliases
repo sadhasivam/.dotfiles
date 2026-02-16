@@ -71,9 +71,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 alias path='echo -e ${PATH//:/\\n}'
 
-## npmsr
-
-alias npm-sr='npm config set registry https://artifactory.k8s.devops.s-9.us/artifactory/api/npm/npm/'
 alias npm-default='npm config set registry https://registry.npmjs.com/'
 
 ## docker

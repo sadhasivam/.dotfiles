@@ -38,6 +38,7 @@ cd ~/.dotfiles
   ```
 - **Git** (install via Xcode CLI tools or Homebrew)
 - **SSH key configured** for GitHub
+
   ```bash
   # Generate new SSH key if needed
   ssh-keygen -t ed25519 -C "your_email@fedex.com"
@@ -69,6 +70,7 @@ cd ~/.dotfiles
 ```
 
 This will:
+
 1. ✅ Verify macOS compatibility
 2. ✅ Install Oh My Zsh (if not present)
 3. ✅ Install/update Homebrew
@@ -212,6 +214,7 @@ mise upgrade
 ```
 
 Or use the `update` alias (updates Homebrew and mise):
+
 ```bash
 update
 ```
@@ -221,26 +224,31 @@ update
 ## Key Aliases
 
 ### Navigation
+
 - `dotfiles` - cd to ~/.dotfiles
 - `library` - cd to ~/Library
 - `sites` - cd to ~/Sites
 
 ### Development
+
 - `nstrap` - Fresh npm install (removes node_modules and lock file)
 - `watch` - Run npm watch script
 - `ws` - Start Python 3 HTTP server on port 1234
 
 ### Modern CLI Tools
+
 - `ls` / `la` - eza with icons and git status (auto-enabled if eza installed)
 - `lt` - Tree view with icons (2 levels deep)
 - `cat` - bat with syntax highlighting (auto-enabled if bat installed)
 - `cd` / `z` - zoxide smart directory jumping (auto-enabled if zoxide installed)
 
 ### Git
+
 - `gst` - git status
 - Git log aliases: `lol`, `lola` (pretty graph views)
 
 ### AWS Profiles
+
 - `pro` - Production (ReadOnly)
 - `ppd` - Pre-production (Developer)
 - `sd` - Sandbox (Developer)
@@ -248,12 +256,14 @@ update
 - `dro` - Databricks (ReadOnly)
 
 ### Kubernetes
+
 - `k` - kubectl
 - `kx` - kubectx (switch contexts)
 - `kns` - kubens (switch namespaces)
 - `mk` - minikube
 
 ### Utilities
+
 - `c` - clear
 - `localip` - Show local IP address
 - `week` - Get current week number
@@ -262,21 +272,20 @@ update
 - `emptytrash` - Empty all trash and clear logs
 - `reloadshell` - Reload shell configuration
 - `reloaddns` - Flush DNS cache
-- `shrug` - Copy ¯\_(ツ)_/¯ to clipboard
+- `shrug` - Copy ¯\_(ツ)\_/¯ to clipboard
 
 ### Time Zones
+
 - `inr` - Show time in India (Asia/Calcutta)
 - `nyc` - Show time in New York
 - `utc` - Show UTC time
 
 ### Docker
+
 - `drm` - Remove all Docker containers
 
-### NPM Registry
-- `npm-sr` - Switch to internal artifactory
-- `npm-default` - Switch to public npm registry
-
 ### Azure
+
 - `azal` - List Azure accounts with tenant IDs
 
 ---
@@ -284,6 +293,7 @@ update
 ## Key Functions
 
 ### Development
+
 - `whoseport <port>` - Find process using a specific port
 - `code` - Open VS Code from command line
 - `docker-clean` - Remove dangling Docker images
@@ -292,11 +302,13 @@ update
 - `trex` - Enhanced tree command with colors and pager
 
 ### Cloud
+
 - `dokeymd5` - Get Digital Ocean SSH key MD5 fingerprint
 - `dotf` - Terraform wrapper for Digital Ocean
 - `dlecr` - Docker login to AWS ECR
 
 ### Personal
+
 - `me` - Load personal rc file (.sadhasivamrc)
 - `them` - Load standard zshrc
 - `ww` - Set up Terraform/AWS profile for environment
@@ -305,29 +317,31 @@ update
 
 ## Runtime Versions
 
-| Tool       | Version  | Configuration Location |
-|------------|----------|------------------------|
-| Python     | 3.14.3   | `symlink/mise.toml` |
-| Node.js    | 24.13.1  | `symlink/mise.toml` |
-| pnpm       | latest   | `symlink/mise.toml` |
-| yarn       | latest   | `symlink/mise.toml` |
-| Java       | 25       | `symlink/mise.toml` |
-| Maven      | 3.9.12   | `symlink/mise.toml` |
-| Gradle     | 9.3.1    | `symlink/mise.toml` |
-| Go         | Latest   | Homebrew (via Brewfile) |
-| Rust       | Latest   | Homebrew (via Brewfile) |
+| Tool    | Version | Configuration Location  |
+| ------- | ------- | ----------------------- |
+| Python  | 3.14.3  | `symlink/mise.toml`     |
+| Node.js | 24.13.1 | `symlink/mise.toml`     |
+| pnpm    | latest  | `symlink/mise.toml`     |
+| yarn    | latest  | `symlink/mise.toml`     |
+| Java    | 25      | `symlink/mise.toml`     |
+| Maven   | 3.9.12  | `symlink/mise.toml`     |
+| Gradle  | 9.3.1   | `symlink/mise.toml`     |
+| Go      | Latest  | Homebrew (via Brewfile) |
+| Rust    | Latest  | Homebrew (via Brewfile) |
 
 **Note:** All development tools are managed by **mise** via `~/.config/mise/config.toml` (symlinked from `symlink/mise.toml`). Go and Rust use Homebrew since they're already installed system-wide.
 
 ### How mise Works
 
 **Declarative Configuration:**
+
 - Tool versions are defined in `symlink/mise.toml`
 - Symlinked to `~/.config/mise/config.toml` during bootstrap
 - mise **auto-installs** missing versions when you start a new shell
 - No manual `mise install` needed - it's automatic!
 
 **Activation:**
+
 - Your `~/.zshrc` includes `eval "$(mise activate zsh)"`
 - This reads the config and adds tools to your PATH
 - Works across all terminal sessions automatically
@@ -335,6 +349,7 @@ update
 **Changing Versions:**
 
 **For global defaults** (edit `symlink/mise.toml`):
+
 ```toml
 [tools]
 python = "3.13.1"  # Change version here
@@ -342,6 +357,7 @@ node = "22.0.0"
 ```
 
 **For specific projects** (create project-local config):
+
 ```bash
 # In your project directory
 mise use python@3.12  # Creates .mise.toml
@@ -349,6 +365,7 @@ mise use node@20      # Overrides global version for this project
 ```
 
 **Installing additional versions:**
+
 ```bash
 # Install and switch globally
 mise use -g python@3.12
@@ -358,6 +375,7 @@ mise install python@3.11
 ```
 
 **Per-project overrides** (create project-local `.mise.toml`):
+
 ```bash
 # In your project directory
 mise use pnpm@9.15.0   # Project-specific version
@@ -365,6 +383,7 @@ mise use node@20.0.0   # Different Node version for this project
 ```
 
 Or use `package.json` for package managers (corepack respects this):
+
 ```json
 {
   "packageManager": "pnpm@9.15.0"
@@ -378,6 +397,7 @@ Or use `package.json` for package managers (corepack respects this):
 ### "command not found: brew"
 
 Homebrew may not be in PATH. Add to your shell config:
+
 ```bash
 # For Apple Silicon (M1/M2/M3)
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -389,6 +409,7 @@ eval "$(/usr/local/bin/brew shellenv)"
 ### "mise: command not found"
 
 Ensure mise activation is in your zshrc:
+
 ```bash
 eval "$(mise activate zsh)"
 ```
@@ -396,6 +417,7 @@ eval "$(mise activate zsh)"
 ### Oh My Zsh theme not loading
 
 Verify `ZSH_CUSTOM` points to dotfiles:
+
 ```bash
 echo $ZSH_CUSTOM  # Should show /Users/yourname/.dotfiles
 ls -la ~/.dotfiles/sivam.zsh-theme
@@ -404,6 +426,7 @@ ls -la ~/.dotfiles/sivam.zsh-theme
 ### Git config not applied
 
 Re-symlink git configuration:
+
 ```bash
 ln -sf ~/.dotfiles/symlink/gitconfig ~/.gitconfig
 ```
@@ -411,6 +434,7 @@ ln -sf ~/.dotfiles/symlink/gitconfig ~/.gitconfig
 ### Homebrew packages not installing
 
 Update Homebrew and retry:
+
 ```bash
 brew update
 brew doctor  # Check for issues
@@ -420,6 +444,7 @@ cd ~/.dotfiles && brew bundle --file=install/Brewfile
 ### VS Code settings not syncing
 
 If VS Code is installed, manually copy settings:
+
 ```bash
 cp ~/.dotfiles/ide/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
@@ -427,6 +452,7 @@ cp ~/.dotfiles/ide/vscode/settings.json ~/Library/Application\ Support/Code/User
 ### Permission denied errors
 
 Ensure scripts are executable:
+
 ```bash
 chmod +x ~/.dotfiles/dotstrap.sh
 chmod +x ~/.dotfiles/install/macos.sh
@@ -435,11 +461,13 @@ chmod +x ~/.dotfiles/install/macos.sh
 ### Shell startup is slow
 
 Profile your zsh startup time:
+
 ```bash
 time zsh -i -c exit
 ```
 
 Common causes:
+
 - Too many Oh My Zsh plugins (keep it under 10)
 - Slow network calls in shell config
 - Large history file
@@ -479,6 +507,7 @@ This file is automatically sourced if it exists.
 ### Adding New Packages
 
 1. Add to `install/Brewfile`:
+
    ```ruby
    brew 'package-name'
    # or
@@ -493,6 +522,7 @@ This file is automatically sourced if it exists.
 ### Custom Aliases
 
 Add to `.aliases` and reload:
+
 ```bash
 echo "alias myalias='command'" >> ~/.dotfiles/.aliases
 source ~/.zshrc
@@ -533,6 +563,7 @@ This is personal configuration. Feel free to fork and adapt to your needs.
 ## Support
 
 For issues or questions:
+
 - Check the [Troubleshooting](#troubleshooting) section
 - Review recent commits: `git log --oneline`
 - Verify file permissions: `ls -la ~/.dotfiles`

@@ -1,6 +1,10 @@
 # shares process using the port
 # usage: whoseport <port number>
 whoseport() {
+    if [ -z "$1" ]; then
+        echo "Usage: whoseport <port number>"
+        return 1
+    fi
     echo "checking port[$1] is free for use"
     lsof -i ":$1" | grep LISTEN
 }
@@ -11,17 +15,29 @@ code () {
 }
 
 dhelp() {
-    cat ~/dotfiles/man.md
+    cat ~/.dotfiles/man.md
 }
 
 # docker tools
 docker-clean() {
-    print "cleaning docker none images "
+    echo "cleaning docker dangling images..."
     images=$(docker images --filter "dangling=true" -q --no-trunc)
-        if [ -n "$images" ]
-    then
+    if [ -n "$images" ]; then
         docker rmi -f $images
+    else
+        echo "  no dangling images found"
     fi
+
+    echo "cleaning stopped containers..."
+    docker container prune -f
+
+    echo "cleaning dangling volumes..."
+    docker volume prune -f
+
+    echo "cleaning unused networks..."
+    docker network prune -f
+
+    echo "docker cleanup complete!"
 }
 
 gitd() {
