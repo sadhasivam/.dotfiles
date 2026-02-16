@@ -26,8 +26,6 @@ plugins=(
   github
   brew
   node
-  npm
-  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -60,23 +58,12 @@ export PATH=$PATH:$GO_HOME/bin
 export AWS_SESSION_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
 
-# Java
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-
-# NodeJS
-export VOLTA_HOME="$HOME/.volta"
-PATH="$VOLTA_HOME/bin:$PATH:.:"
-
-
-
-export PATH
 
 # pnpm
-export PNPM_HOME="/Users/sadhasivam/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+eval "$(mise activate zsh)"

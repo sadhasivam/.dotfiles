@@ -10,10 +10,12 @@ DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 echo "🔍 Detected architecture: $ARCH"
 
 # === 1. Install Oh My Zsh if missing ===
-if ! command -v zsh >/dev/null 2>&1; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "⚙️ Installing Oh My Zsh..."
-  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
+
 
 # === 2. Install Homebrew ===
 if ! command -v brew >/dev/null 2>&1; then
@@ -40,7 +42,13 @@ else
   echo "✅ Brew bundle already satisfied."
 fi
 
-# === 4. Symlink Configs ===
+echo "🧰 Bootstrapping runtimes via mise..."
+# === 4. Setup Node ===
+bash "$DOTFILES/install/bootstrap-mise.sh"
+
+echo "✅ mise bootstrap complete"
+
+# === 5. Symlink Configs ===
 echo "🔗 Setting up dotfiles..."
 
 link_file() {
