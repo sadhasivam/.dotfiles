@@ -20,12 +20,16 @@ alias watch="npm run watch"
 
 # Modern CLI tools (will fallback to standard commands if not installed)
 if command -v eza &> /dev/null; then
-  alias ls='eza -lah --icons --git'
-  alias la='eza -lah --icons --git'
-  alias lt='eza --tree --level=2 --icons --git'
+  alias ls='eza -lah --icons --git --color=auto --group-directories-first'
+  alias la='eza -lah --icons --git --color=auto --group-directories-first'
+  alias lt='eza --tree --level=2 --icons --git --color=auto'
 else
   alias ls="la -lah"
 fi
+
+# Better eza colors
+# di=34 sets directories to bright blue
+export EZA_COLORS="di=34:ur=0:uw=0:ux=0:ue=0:gr=0:gw=0:gx=0:tr=0:tw=0:tx=0"
 
 if command -v bat &> /dev/null; then
   alias cat='bat --style=auto'

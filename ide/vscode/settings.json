@@ -4,7 +4,7 @@
 
   // ========== Visuals & Editor ==========
   "editor.formatOnSave": true,
-  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Hack', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', 'FiraCode Nerd Font', 'Hack Nerd Font', Menlo, Monaco, monospace",
   "editor.fontSize": 16, // comfortable base, raise to 17 on 27"+ monitors
   "editor.lineHeight": 1.5,
   "editor.fontLigatures": true,
@@ -50,6 +50,8 @@
   "workbench.startupEditor": "newUntitledFile",
 
   // ========== Integrated Terminal ==========
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrainsMono Nerd Font', monospace",
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontWeight": "normal", // 300 looks slick but strains after hours

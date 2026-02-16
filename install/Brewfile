@@ -94,10 +94,10 @@ brew 'ffmpeg'
 brew 'caddy'               # HTTP server with automatic HTTPS
 
 # === Fonts ===
-cask 'font-jetbrains-mono'       # Your VS Code font (with ligatures)
-cask 'font-fira-code'            # Popular coding font with ligatures
-cask 'font-monaspace'            # GitHub's modern monospace font family
-cask 'font-hack'                 # Fallback font in your VS Code config
+cask 'font-jetbrains-mono-nerd-font'  # JetBrains Mono with icons (for eza, etc.)
+cask 'font-fira-code-nerd-font'       # Fira Code with icons
+cask 'font-hack-nerd-font'            # Hack with icons
+cask 'font-monaspace-nerd-font'       # Monaspace with icons
 
 # AI
 cask 'claude-code'
