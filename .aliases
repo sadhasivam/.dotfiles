@@ -45,11 +45,7 @@ unalias gcm >/dev/null 2>/dev/null
 
 ## AWS gimme-creds
 export AWS_DEFAULT_REGION=us-east-1
-alias pro="export AWS_PROFILE=\"prd-OktaReadOnlyRole\""
-alias legd="export AWS_PROFILE=\"legacy-OktaDeveloperAccess\""
-alias ppd="export AWS_PROFILE=\"preprod-OktaDeveloperAccess\""
-alias sd="export AWS_PROFILE=\"sandbox-OktaDeveloperAccess\""
-alias dro="export AWS_PROFILE=\"databricks-OktaReadOnlyRole\""
+# alias pro="export AWS_PROFILE=\"prd-OktaReadOnlyRole\""
 
 ## Get week number
 

@@ -43,18 +43,18 @@ brew 'jq'                  # JSON processor
 
 # === Cloud CLI Tools ===
 brew 'awscli'
-# brew 'aws-okta'            # AWS + Okta SSO integration
 brew 'azure-cli'
-# brew 'minio' 
-# brew 'minio-mc'
+
 cask 'orbstack'            # Lightweight Docker Desktop replacement
+
+brew 'lazydocker'          # Terminal UI for Docker
 brew 'kubectl'             # K8s CLI
-brew 'kubectx'             # Switch between K8s contexts/namespaces easily
+brew 'kubectx'             # Switch between K8s contexts/namespaces (includes kubens)
 brew 'k9s'                 # Kubernetes TUI (better than kubectl alone)
 brew 'stern'               # Multi-pod log tailing for K8s
 brew 'helm'                # Kubernetes package manager
 brew 'kustomize'           # Kubernetes config management
-brew 'lazydocker'          # Terminal UI for Docker
+
 
 # === Terraform & IaC Toolchain ===
 brew 'tfenv'               # Terraform version manager
@@ -77,9 +77,6 @@ brew 'rustup'
 brew 'uv'                  # Python package manager (faster than pip)
 brew 'ruff'                # Fast Python linter/formatter (replaces black+flake8+isort)
 brew 'pipx'                # Install Python CLI tools in isolated environments
-# brew 'gradle'
-# brew 'maven'
-# brew 'volta'               # JavaScript Tool Manager
 brew 'mise'                 # polygot version manager for python, node, java
 brew 'lazygit'             # Terminal UI for git
 
@@ -97,7 +94,7 @@ brew 'caddy'               # HTTP server with automatic HTTPS
 cask 'font-jetbrains-mono-nerd-font'  # JetBrains Mono with icons (for eza, etc.)
 cask 'font-fira-code-nerd-font'       # Fira Code with icons
 cask 'font-hack-nerd-font'            # Hack with icons
-cask 'font-monaspace-nerd-font'       # Monaspace with icons
+cask 'font-monaspice-nerd-font'       # Monaspace with icons (renamed in Homebrew)
 
 # AI
 cask 'claude-code'

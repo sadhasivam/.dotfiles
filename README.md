@@ -154,8 +154,7 @@ exec zsh -l
 │
 ├── install/                 # Installation scripts
 │   ├── macos.sh             # macOS bootstrap automation
-│   ├── bootstrap-mise.sh    # Runtime version setup
-│   ├── setup-node-corepack.sh
+│   ├── bootstrap-mise.sh    # Runtime version setup via mise
 │   └── Brewfile             # Homebrew package definitions
 │
 ├── symlink/                 # Config files to be symlinked
@@ -165,7 +164,8 @@ exec zsh -l
 │   ├── npmrc                # NPM configuration
 │   ├── curlrc               # Curl defaults
 │   ├── editorconfig         # Editor settings
-│   └── vimrc                # Vim configuration
+│   ├── vimrc                # Vim configuration
+│   └── mise.toml            # mise runtime version configuration
 │
 ├── fn/                      # Custom shell functions
 │   ├── functions            # General utilities
@@ -190,6 +190,7 @@ After installation, these files are symlinked to your home directory:
 - `~/.curlrc` → `~/.dotfiles/symlink/curlrc`
 - `~/.editorconfig` → `~/.dotfiles/symlink/editorconfig`
 - `~/.vimrc` → `~/.dotfiles/symlink/vimrc`
+- `~/.config/mise/config.toml` → `~/.dotfiles/symlink/mise.toml`
 
 ---
 
@@ -304,28 +305,70 @@ update
 
 ## Runtime Versions
 
-Managed by **mise** (`.tool-versions` compatible):
+| Tool       | Version  | Configuration Location |
+|------------|----------|------------------------|
+| Python     | 3.14.3   | `symlink/mise.toml` |
+| Node.js    | 24.13.1  | `symlink/mise.toml` |
+| pnpm       | latest   | `symlink/mise.toml` |
+| yarn       | latest   | `symlink/mise.toml` |
+| Java       | 25       | `symlink/mise.toml` |
+| Maven      | 3.9.12   | `symlink/mise.toml` |
+| Gradle     | 9.3.1    | `symlink/mise.toml` |
+| Go         | Latest   | Homebrew (via Brewfile) |
+| Rust       | Latest   | Homebrew (via Brewfile) |
 
-| Tool       | Version  |
-|------------|----------|
-| Python     | 3.14.3   |
-| Node.js    | 24.13.1  |
-| Java       | 25       |
-| Maven      | 3.9.9    |
-| Gradle     | 8.7      |
-| Go         | Latest   |
-| Rust       | Latest   |
+**Note:** All development tools are managed by **mise** via `~/.config/mise/config.toml` (symlinked from `symlink/mise.toml`). Go and Rust use Homebrew since they're already installed system-wide.
 
-To change versions:
+### How mise Works
+
+**Declarative Configuration:**
+- Tool versions are defined in `symlink/mise.toml`
+- Symlinked to `~/.config/mise/config.toml` during bootstrap
+- mise **auto-installs** missing versions when you start a new shell
+- No manual `mise install` needed - it's automatic!
+
+**Activation:**
+- Your `~/.zshrc` includes `eval "$(mise activate zsh)"`
+- This reads the config and adds tools to your PATH
+- Works across all terminal sessions automatically
+
+**Changing Versions:**
+
+**For global defaults** (edit `symlink/mise.toml`):
+```toml
+[tools]
+python = "3.13.1"  # Change version here
+node = "22.0.0"
+```
+
+**For specific projects** (create project-local config):
 ```bash
-# Install specific version
-mise install python@3.12
+# In your project directory
+mise use python@3.12  # Creates .mise.toml
+mise use node@20      # Overrides global version for this project
+```
 
-# Use globally
+**Installing additional versions:**
+```bash
+# Install and switch globally
 mise use -g python@3.12
 
-# Use in current project
-mise use python@3.12  # Creates .mise.toml
+# Install without switching
+mise install python@3.11
+```
+
+**Per-project overrides** (create project-local `.mise.toml`):
+```bash
+# In your project directory
+mise use pnpm@9.15.0   # Project-specific version
+mise use node@20.0.0   # Different Node version for this project
+```
+
+Or use `package.json` for package managers (corepack respects this):
+```json
+{
+  "packageManager": "pnpm@9.15.0"
+}
 ```
 
 ---
