@@ -72,11 +72,12 @@ if command -v fzf &> /dev/null; then
   eval "$(fzf --zsh)"
 fi
 
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# Initialize zoxide last (must be at the end)
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
   alias cd='z'
-fi
-
-if command -v direnv &> /dev/null; then
-  eval "$(direnv hook zsh)"
 fi

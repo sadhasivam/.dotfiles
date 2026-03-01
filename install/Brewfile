@@ -96,5 +96,8 @@ cask 'font-fira-code-nerd-font'       # Fira Code with icons
 cask 'font-hack-nerd-font'            # Hack with icons
 cask 'font-monaspice-nerd-font'       # Monaspace with icons (renamed in Homebrew)
 
+# === DevTools ===
+brew 'protobuf'
+
 # AI
 cask 'claude-code'
