@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Git pre-push hook - Blocks all automated pushes
+# This prevents Claude Code or any automation from pushing code
+#
+# To allow a push, you must manually run: git push (bypasses this hook via user intent)
+# Or use: git push --no-verify (explicit override)
+#
+
+# Check if this is being run by an automation tool
+if [ -n "$CLAUDE_CODE_SESSION" ] || [ -n "$CI" ] || [ -n "$AUTOMATED_PUSH" ]; then
+    echo "❌ BLOCKED: Automated git push is not allowed."
+    echo "   Please push manually from your terminal."
+    exit 1
+fi
+
+# Allow manual pushes from terminal
+exit 0

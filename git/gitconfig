@@ -20,6 +20,7 @@
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore_global
     pager = delta
+	hooksPath = ~/.dotfiles/git/hooks
 
 [pull]
     rebase = true

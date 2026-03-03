@@ -65,10 +65,18 @@ link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
 link_file "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
 link_file "$DOTFILES/symlink/curlrc" "$HOME/.curlrc"
 link_file "$DOTFILES/symlink/editorconfig" "$HOME/.editorconfig"
-link_file "$DOTFILES/symlink/gitignore_global" "$HOME/.gitignore_global"
-link_file "$DOTFILES/symlink/gitconfig" "$HOME/.gitconfig"
 mkdir -p "$HOME/.vim" && link_file "$DOTFILES/symlink/vimrc" "$HOME/.vim/.vimrc"
 mkdir -p "$HOME/.config/mise" && link_file "$DOTFILES/symlink/mise.toml" "$HOME/.config/mise/config.toml"
+
+# Claude Code configuration
+mkdir -p "$HOME/.claude"
+link_file "$DOTFILES/ai/claude/settings.json" "$HOME/.claude/settings.json"
+link_file "$DOTFILES/ai/claude/hooks" "$HOME/.claude/hooks"
+
+# Git configuration
+link_file "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
+link_file "$DOTFILES/git/gitignore_global" "$HOME/.gitignore_global"
+git config --global core.hooksPath "$DOTFILES/git/hooks"
 
 VSCODE_PATH="$HOME/Library/Application Support/Code/User"
 

@@ -50,10 +50,6 @@ fi
 # prevent commands from being added to your history by prepending a space to the line.
 setopt HIST_IGNORE_SPACE
 
-
-# GoLang
-export GO_HOME="$HOME/go"
-export PATH=$PATH:$GO_HOME/bin
 export AWS_SESSION_TTL=12h
 export AWS_ASSUME_ROLE_TTL=12h
 
@@ -81,3 +77,6 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
   alias cd='z'
 fi
+
+export DOTFILES="$HOME/.dotfiles"
+[ -f "$DOTFILES/env/load.sh" ] && source "$DOTFILES/env/load.sh"
