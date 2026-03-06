@@ -7,17 +7,11 @@ registry=https://registry.npmjs.org/
 # 📦 Save exact versions (no ^ or ~)
 save-exact=true
 
-# 🔒 Disable sending of usage analytics
-metrics-registry=
-
 # 🚫 Don't generate package-lock.json by default (optional)
 package-lock=false
 
 # ⏱ Set a global fetch timeout (in ms)
 fetch-timeout=60000
-
-# 💾 Increase cache size (default is 10MB)
-cache-max=50000000
 
 # 💡 Uncomment for scoped registries (e.g., GitHub or private)
 # @my-org:registry=https://npm.pkg.github.com/
