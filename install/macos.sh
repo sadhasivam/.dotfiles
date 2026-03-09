@@ -63,6 +63,7 @@ link_file() {
 
 link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
 link_file "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
+link_file "$DOTFILES/symlink/pnpmrc" "$HOME/.pnpmrc"
 link_file "$DOTFILES/symlink/curlrc" "$HOME/.curlrc"
 link_file "$DOTFILES/symlink/editorconfig" "$HOME/.editorconfig"
 mkdir -p "$HOME/.vim" && link_file "$DOTFILES/symlink/vimrc" "$HOME/.vim/.vimrc"

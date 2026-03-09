@@ -1,0 +1,26 @@
+
+# ~/.pnpmrc
+
+# 📦 Save exact versions (no ^ or ~)
+save-exact=true
+
+# 🔒 Auto-install peer dependencies
+auto-install-peers=true
+
+# 🚨 Don't fail on peer dependency conflicts
+strict-peer-dependencies=false
+
+# 🔕 Disable funding messages
+fund=false
+
+# ⚡ Use hard links to save disk space
+link-workspace-packages=true
+
+# 🔗 Public registry
+registry=https://registry.npmjs.org/
+
+# 🔕 Disable update notifier
+update-notifier=false
+
+# 🚨 Enable security audits
+audit=true
