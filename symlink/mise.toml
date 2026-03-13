@@ -13,8 +13,8 @@ yarn = "latest"
 
 # Java ecosystem
 java = "25"
-maven = "3.9.12"
-gradle = "9.3.1"
+maven = "3.9.14"
+gradle = "9.4.0"
 
 # Additional languages (managed by mise, not Homebrew)
 # Uncomment to enable:
