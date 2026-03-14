@@ -97,3 +97,14 @@ alias kns='kubens'
 ## Azure
 
 alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -r '.[] | [.name, .id] | @tsv'"
+
+
+### Claude 
+
+alias cc='claude --dangerously-skip-permissions'
+
+# Start in plan mode for research (read-only, no edits)
+alias ccp='claude --permission-mode plan'
+
+# Resume the last session
+alias ccr='claude --resume'

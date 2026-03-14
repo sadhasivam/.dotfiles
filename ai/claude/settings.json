@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "75"
   },
   "permissions": {
     "allow": [
@@ -77,16 +77,32 @@
       "Bash(uv remove:*)",
       "Bash(uv run:*)",
       "Bash(python:*)",
-      "Bash(python3:*)"
-    ],
-    "ask": [
-      "Read(~/.config/*)"
+      "Bash(python3:*)",
+      "Bash(lsof -ti:8000)",
+      "Bash(open http://localhost:3000)",
+      "Bash(pkill -f \"uvicorn.*weaver\")",
+      "Bash(kill 66067 66079 66080)",
+      "Bash(pip show:*)",
+      "Bash(curl -s -X POST http://localhost:8000/api/v1/runs/test -H \"Content-Type: application/json\" -d '{\"\"\"\"test\"\"\"\": \"\"\"\"data\"\"\"\"}')",
+      "Bash(.venv/bin/python -c \"import multipart; print\\(''python-multipart is installed''\\)\")",
+      "Bash(pkill -9 -f \"uvicorn.*app.main\")",
+      "Bash(xargs kill:*)",
+      "Bash(kill -9 24415 24428)",
+      "Bash(.venv/bin/uvicorn app.main:app --reload --port 8000)",
+      "Bash(.venv/bin/python test_api.py)",
+      "Bash(.venv/bin/python -c \"import fastapi; import pydantic; print\\(f''FastAPI: {fastapi.__version__}''\\); print\\(f''Pydantic: {pydantic.__version__}''\\)\")",
+      "Bash(git init:*)",
+      "Bash(chmod +x /Users/sadhasivam/Jawn/Code/texture/Weaver/scripts/download_boston_housing.sh)",
+      "Bash(./scripts/download_boston_housing.sh)"
     ],
     "deny": [
       "Read(.env*)",
       "Read(**/.env*)",
       "Read(**/secrets/**)",
       "Read(**/credentials.*)"
+    ],
+    "ask": [
+      "Read(~/.config/*)"
     ]
   },
   "hooks": {
@@ -105,5 +121,8 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
   }
 }
