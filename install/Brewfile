@@ -11,6 +11,7 @@ brew 'htop'
 brew 'btop'                # Modern system monitor (better than htop)
 brew 'nmap'
 brew 'wget'
+brew 'mole'
 cask 'mitmproxy'
 
 # === Modern CLI Tools ===

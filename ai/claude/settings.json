@@ -53,10 +53,6 @@
       "Bash(gh pr status:*)",
       "Bash(gh pr view:*)",
       "Bash(gh search:*)",
-      "Bash(glab issue list:*)",
-      "Bash(glab issue view:*)",
-      "Bash(glab mr list:*)",
-      "Bash(glab mr view:*)",
       "Bash(npm info:*)",
       "Bash(npm search:*)",
       "Bash(pnpm info:*)",
@@ -79,21 +75,23 @@
       "Bash(python:*)",
       "Bash(python3:*)",
       "Bash(lsof -ti:8000)",
-      "Bash(open http://localhost:3000)",
-      "Bash(pkill -f \"uvicorn.*weaver\")",
-      "Bash(kill 66067 66079 66080)",
-      "Bash(pip show:*)",
-      "Bash(curl -s -X POST http://localhost:8000/api/v1/runs/test -H \"Content-Type: application/json\" -d '{\"\"\"\"test\"\"\"\": \"\"\"\"data\"\"\"\"}')",
-      "Bash(.venv/bin/python -c \"import multipart; print\\(''python-multipart is installed''\\)\")",
-      "Bash(pkill -9 -f \"uvicorn.*app.main\")",
-      "Bash(xargs kill:*)",
-      "Bash(kill -9 24415 24428)",
-      "Bash(.venv/bin/uvicorn app.main:app --reload --port 8000)",
-      "Bash(.venv/bin/python test_api.py)",
-      "Bash(.venv/bin/python -c \"import fastapi; import pydantic; print\\(f''FastAPI: {fastapi.__version__}''\\); print\\(f''Pydantic: {pydantic.__version__}''\\)\")",
       "Bash(git init:*)",
-      "Bash(chmod +x /Users/sadhasivam/Jawn/Code/texture/Weaver/scripts/download_boston_housing.sh)",
-      "Bash(./scripts/download_boston_housing.sh)"
+      "Bash(pnpm vercel:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm preview:*)",
+      "Bash(git push:*)",
+      "Bash(git revert:*)",
+      "Bash(make start:*)",
+      "Bash(make status:*)",
+      "Bash(make stop:*)",
+      "Bash(caddy stop:*)",
+      "Bash(caddy start:*)",
+      "Bash(make build:*)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(xargs -n1 basename)",
+      "Bash(for file:*)",
+      "Bash(do)",
+      "Bash(done)"
     ],
     "deny": [
       "Read(.env*)",
@@ -103,6 +101,10 @@
     ],
     "ask": [
       "Read(~/.config/*)"
+    ],
+    "additionalDirectories": [
+      "/Users/sadhasivam/Jawn/Code/texture/Weaver/app/storage/uploads",
+      "/Users/sadhasivam/Jawn/Code/texture/.github"
     ]
   },
   "hooks": {
@@ -123,6 +125,11 @@
     ]
   },
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   }
 }
