@@ -25,6 +25,7 @@ brew 'delta'               # Better git diff viewer
 brew 'httpie'              # Better curl for APIs (http command)
 brew 'glow'                # Markdown renderer for terminal
 brew 'direnv'              # Auto-load environment variables per directory
+brew 'visidata'            # CLI to view tabular data like excel
 
 # === Secrets & Encryption ===
 brew 'pass'
