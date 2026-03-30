@@ -1,6 +1,12 @@
 # mise global configuration
 # Symlinked to ~/.config/mise/config.toml
 # mise auto-installs these versions when shell starts (via mise activate in zshrc)
+#
+# Note: Multiple JS runtimes (Node, Bun, Deno) can coexist without conflicts.
+# Each has its own binaries and package managers:
+#   - Node: npm, pnpm (via corepack), yarn (via corepack)
+#   - Bun: bun (built-in package manager + runtime)
+#   - Deno: deno (runtime with built-in tooling)
 
 [tools]
 # Python
@@ -10,6 +16,10 @@ python = "3.14.3"
 node = "24.13.1"
 pnpm = "latest"
 yarn = "latest"
+
+# Modern JavaScript runtimes
+bun = "latest"      # Fast all-in-one JS runtime (includes bundler, test runner, package manager)
+deno = "latest"     # Secure TypeScript/JavaScript runtime
 
 # Java ecosystem
 java = "25"

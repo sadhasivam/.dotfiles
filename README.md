@@ -117,7 +117,9 @@ git config --global user.email "your.email@example.com"
 
 ### Development Tools
 
-- **Languages**: Python 3.14, Node.js 24, Java 25, Go, Rust, Maven, Gradle
+- **JavaScript Runtimes**: Node.js 24, Bun (latest), Deno (latest)
+- **Languages**: Python 3.14, Java 25, Go, Rust, Maven, Gradle
+- **Package Managers**: pnpm, yarn (via corepack), bun (built-in), npm
 - **Shells**: Zsh with syntax highlighting, Bash (latest)
 - **Editors**: Vim configuration
 - **Version Control**: Git with modern config, Subversion, lazygit (Git TUI)
