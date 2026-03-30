@@ -31,8 +31,6 @@
   "window.autoDetectColorScheme": true,
   "workbench.fontAliasing": "antialiased",
   "workbench.colorTheme": "Vitesse Dark",
-  "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  "workbench.preferredLightColorTheme": "Google Colab Dark Theme",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,

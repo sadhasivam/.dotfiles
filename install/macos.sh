@@ -120,6 +120,23 @@ link_file "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
 link_file "$DOTFILES/git/gitignore_global" "$HOME/.gitignore_global"
 git config --global core.hooksPath "$DOTFILES/git/hooks"
 
+# Create .gitconfig.local if it doesn't exist (for user-specific settings)
+if [ ! -f "$HOME/.gitconfig.local" ]; then
+  echo "⚙️  Creating ~/.gitconfig.local for user-specific git config..."
+  echo "Please enter your git user details:"
+  read -p "  Name: " git_name
+  read -p "  Email: " git_email
+
+  cat > "$HOME/.gitconfig.local" <<EOF
+[user]
+	name = $git_name
+	email = $git_email
+EOF
+  echo "✅ Created ~/.gitconfig.local (gitignored, won't be tracked)"
+else
+  echo "✅ ~/.gitconfig.local already exists"
+fi
+
 VSCODE_PATH="$HOME/Library/Application Support/Code/User"
 
 # Check if VS Code is installed

@@ -1,6 +1,7 @@
-[user]
-    name = sadhasivam jayabalaganesan
-    email = sadha.jayabalaganesan@fedex.com
+# User-specific settings (name, email) are loaded from ~/.gitconfig.local
+# This file is not tracked in dotfiles, keeping the repo portable
+[include]
+    path = ~/.gitconfig.local
 
 [color]
     branch = auto
@@ -20,7 +21,7 @@
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore_global
     pager = delta
-	hooksPath = ~/.dotfiles/git/hooks
+	# hooksPath is set dynamically by install/macos.sh
 
 [pull]
     rebase = true

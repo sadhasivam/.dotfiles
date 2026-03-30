@@ -466,3 +466,8 @@ zsdoc/data
 !/tests/_output/.gitkeep
 
 # End of https://www.gitignore.io/api/go,osx,zsh,node,rust,java,linux,python,kotlin,windows,intellij+all
+
+### Custom Additions ###
+
+# Local git config (user-specific, not shared in dotfiles)
+.gitconfig.local

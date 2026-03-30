@@ -89,9 +89,18 @@ exec zsh -l
 
 ### 4. Configure Git Identity
 
-Set your personal Git identity (required for commits):
+The installer will prompt you to create `~/.gitconfig.local` with your personal Git identity. This file is:
+- ✅ Automatically loaded by your gitconfig via `[include]`
+- ✅ Gitignored globally (won't be tracked in any repo)
+- ✅ Keeps your dotfiles portable across machines
+
+If you need to update it later:
 
 ```bash
+# Edit the local config file directly
+vim ~/.gitconfig.local
+
+# Or use git config (writes to ~/.gitconfig.local via the include)
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
