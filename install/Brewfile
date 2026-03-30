@@ -103,3 +103,4 @@ brew 'protobuf'
 
 # AI
 cask 'claude-code'
+cask 'codex'

@@ -87,6 +87,15 @@ exec zsh -l
 # Or open a new terminal window
 ```
 
+### 4. Configure Git Identity
+
+Set your personal Git identity (required for commits):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
 ---
 
 ## What Gets Installed
@@ -161,13 +170,16 @@ exec zsh -l
 │
 ├── symlink/                 # Config files to be symlinked
 │   ├── zshrc                # Zsh configuration
-│   ├── gitconfig            # Git configuration
-│   ├── gitignore_global     # Global git ignore patterns
 │   ├── npmrc                # NPM configuration
 │   ├── curlrc               # Curl defaults
 │   ├── editorconfig         # Editor settings
 │   ├── vimrc                # Vim configuration
 │   └── mise.toml            # mise runtime version configuration
+│
+├── git/                     # Git configuration
+│   ├── gitconfig            # Git configuration
+│   ├── gitignore_global     # Global git ignore patterns
+│   └── hooks/               # Git hooks
 │
 ├── fn/                      # Custom shell functions
 │   ├── functions            # General utilities
@@ -186,8 +198,8 @@ exec zsh -l
 After installation, these files are symlinked to your home directory:
 
 - `~/.zshrc` → `~/.dotfiles/symlink/zshrc`
-- `~/.gitconfig` → `~/.dotfiles/symlink/gitconfig`
-- `~/.gitignore_global` → `~/.dotfiles/symlink/gitignore_global`
+- `~/.gitconfig` → `~/.dotfiles/git/gitconfig`
+- `~/.gitignore_global` → `~/.dotfiles/git/gitignore_global`
 - `~/.npmrc` → `~/.dotfiles/symlink/npmrc`
 - `~/.curlrc` → `~/.dotfiles/symlink/curlrc`
 - `~/.editorconfig` → `~/.dotfiles/symlink/editorconfig`

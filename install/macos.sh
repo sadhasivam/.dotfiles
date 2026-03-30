@@ -55,9 +55,50 @@ link_file() {
   local src="$1"
   local dest="$2"
 
+  # If destination exists
   if [ -e "$dest" ] || [ -L "$dest" ]; then
-    rm -rf "$dest"
+    # Check if it's a symlink - just remove it
+    if [ -L "$dest" ]; then
+      rm -rf "$dest"
+    # Check if it's a real file or directory (not a symlink)
+    elif [ -f "$dest" ] || [ -d "$dest" ]; then
+      # Create _backup directory if it doesn't exist
+      local backup_dir="$DOTFILES/_backup"
+      mkdir -p "$backup_dir"
+
+      # Create backup with timestamp
+      local timestamp=$(date +"%Y%m%d_%H%M%S")
+      local dest_basename=$(basename "$dest")
+
+      # Handle extensions properly (including dotfiles)
+      if [[ "$dest_basename" == .* ]]; then
+        # It's a dotfile (starts with .)
+        local dest_name="${dest_basename}"
+        local backup_name="${dest_name}_${timestamp}"
+      elif [[ "$dest_basename" == *.* ]]; then
+        # Has an extension
+        local dest_name="${dest_basename%.*}"
+        local dest_ext="${dest_basename##*.}"
+        local backup_name="${dest_name}_${timestamp}.${dest_ext}"
+      else
+        # No extension
+        local backup_name="${dest_basename}_${timestamp}"
+      fi
+
+      local backup_path="$backup_dir/${backup_name}"
+
+      if [ -f "$dest" ]; then
+        echo "  📦 Backing up existing file: $dest -> $backup_path"
+      else
+        echo "  📦 Backing up existing directory: $dest -> $backup_path"
+      fi
+      mv "$dest" "$backup_path"
+    else
+      # Unknown type, remove it
+      rm -rf "$dest"
+    fi
   fi
+
   ln -s "$src" "$dest"
 }
 
@@ -86,8 +127,8 @@ if [ -d "$VSCODE_PATH" ]; then
   echo "VS Code detected ✅"
   echo "Linking settings.json from dotfiles..."
 
-  # Symlink (force replace existing file with -sf)
-  ln -sf "$DOTFILES/ide/vscode/settings.json" "$VSCODE_PATH/settings.json"
+  # Use link_file to enable backup policy
+  link_file "$DOTFILES/ide/vscode/settings.json" "$VSCODE_PATH/settings.json"
 else
   echo "VS Code not installed ❌ - skipping symlink"
 fi
