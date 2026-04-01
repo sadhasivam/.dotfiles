@@ -72,11 +72,11 @@ if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-# Initialize zoxide last (must be at the end)
+# Load additional environment configs before zoxide
+[ -f "$DOTFILES/env/load.sh" ] && source "$DOTFILES/env/load.sh"
+
+# Initialize zoxide LAST (must be at the end)
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
   alias cd='z'
 fi
-
-export DOTFILES="$HOME/.dotfiles"
-[ -f "$DOTFILES/env/load.sh" ] && source "$DOTFILES/env/load.sh"
