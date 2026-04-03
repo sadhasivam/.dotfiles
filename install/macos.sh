@@ -103,6 +103,7 @@ link_file() {
 }
 
 link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
+link_file "$DOTFILES/symlink/bashrc" "$HOME/.bashrc"
 link_file "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
 link_file "$DOTFILES/symlink/pnpmrc" "$HOME/.pnpmrc"
 link_file "$DOTFILES/symlink/curlrc" "$HOME/.curlrc"
@@ -156,5 +157,8 @@ brew upgrade
 
 echo "🧹 Cleaning up..."
 brew cleanup
+
+echo "⬆️ Upgrading all  Mise packages "
+mise upgrade
 
 echo "✅ Finished dotstrapping!"
