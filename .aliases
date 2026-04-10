@@ -99,7 +99,17 @@ alias kns='kubens'
 alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -r '.[] | [.name, .id] | @tsv'"
 
 
-### Claude 
+### Dotfiles Management
+
+# Update dotfiles and re-run bootstrap
+alias dotupdate="cd ~/.dotfiles && git pull && ./dotstrap.sh -y"
+
+# Edit dotfiles in VS Code
+alias dotedit="cd ~/.dotfiles && code ."
+
+# Quick access to dotfiles directory (alias already exists as 'dotfiles')
+
+### Claude
 
 alias cc='claude --dangerously-skip-permissions'
 

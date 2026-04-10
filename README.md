@@ -23,6 +23,9 @@ git clone git@github.com:YOUR_USERNAME/.dotfiles.git ~/.dotfiles
 # Run the bootstrap script
 cd ~/.dotfiles
 ./dotstrap.sh
+
+# Skip confirmation prompt (useful for automation)
+./dotstrap.sh -y
 ```
 
 ---
@@ -66,7 +69,14 @@ cd ~/.dotfiles
 ### 2. Run Bootstrap Script
 
 ```bash
+# Interactive mode (asks for confirmation)
 ./dotstrap.sh
+
+# Automatic mode (skips confirmation)
+./dotstrap.sh -y
+
+# Show help
+./dotstrap.sh --help
 ```
 
 This will:
@@ -224,22 +234,16 @@ After installation, these files are symlinked to your home directory:
 To update your dotfiles and installed packages:
 
 ```bash
-# Update dotfiles repository
+# Quick update: pulls latest dotfiles and re-bootstraps
+dotupdate
+
+# Or manually:
 cd ~/.dotfiles
 git pull origin main
+./dotstrap.sh -y
 
-# Re-run bootstrap to apply changes
-./dotstrap.sh
-
-# Update packages
-brew update && brew upgrade && brew cleanup
-mise upgrade
-```
-
-Or use the `update` alias (updates Homebrew and mise):
-
-```bash
-update
+# Update just packages (no dotfiles changes)
+update  # Alias for: brew update && brew upgrade && brew cleanup && mise upgrade
 ```
 
 ---
@@ -251,6 +255,11 @@ update
 - `dotfiles` - cd to ~/.dotfiles
 - `library` - cd to ~/Library
 - `sites` - cd to ~/Sites
+
+### Dotfiles Management
+
+- `dotupdate` - Pull latest dotfiles and re-bootstrap (automatic)
+- `dotedit` - Open dotfiles in VS Code
 
 ### Development
 
