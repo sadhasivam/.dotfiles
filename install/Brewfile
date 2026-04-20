@@ -40,8 +40,9 @@ brew 'wifi-password'       # Quickly retrieve saved Wi-Fi passwords
 
 # === Dev Tools: Git & VCS ===
 brew 'git'
-brew 'subversion'                 # Required by some font installers
+brew 'subversion'          # Required by some font installers
 brew 'jq'                  # JSON processor
+brew 'gh'                  # GitHub CLI to manage PR,issues, etc 
 
 # === Cloud CLI Tools ===
 brew 'awscli'

@@ -102,7 +102,7 @@ alias azal="echo -e \"Name\tTenantID\n\" && az account list --output json | jq -
 ### Dotfiles Management
 
 # Update dotfiles and re-run bootstrap
-alias dotupdate="cd ~/.dotfiles && git pull && ./dotstrap.sh -y"
+alias dotupdate="cd ~/.dotfiles && git pull origin main && ./dotstrap.sh -y"
 
 # Edit dotfiles in VS Code
 alias dotedit="cd ~/.dotfiles && code ."
