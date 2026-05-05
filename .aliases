@@ -118,3 +118,7 @@ alias ccp='claude --permission-mode plan'
 
 # Resume the last session
 alias ccr='claude --resume'
+
+# file naming and cleanup aliases
+alias dc='dot_clean -m .'
+alias f2lw="f2 -r '{f}{ext.lw}' -x"

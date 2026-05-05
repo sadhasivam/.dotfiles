@@ -26,6 +26,7 @@ brew 'httpie'              # Better curl for APIs (http command)
 brew 'glow'                # Markdown renderer for terminal
 brew 'direnv'              # Auto-load environment variables per directory
 brew 'visidata'            # CLI to view tabular data like excel
+brew 'f2'                  # File Renaming Utility
 
 # === Secrets & Encryption ===
 brew 'pass'
@@ -105,3 +106,11 @@ brew 'bufbuild/buf/buf'               # Modern ProtoBuf tool
 # AI
 cask 'claude-code'
 cask 'codex'
+
+# Architecture as OS Tools
+## Security
+brew 'trivy'
+
+# Photography Tools
+brew 'exiftool'
+
