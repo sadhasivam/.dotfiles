@@ -1,0 +1,215 @@
+_raw2jpg_is_raw() {
+  case "$1" in
+    *.dng|*.DNG|*.nef|*.NEF|*.cr2|*.CR2|*.cr3|*.CR3|*.arw|*.ARW|*.raf|*.RAF|*.rw2|*.RW2|*.orf|*.ORF)
+      return 0 ;;
+    *)
+      return 1 ;;
+  esac
+}
+
+_raw2jpg_convert() {
+  local input_file="$1"
+  local output_dir="$2"
+  local fmt="$3"    # jpeg | heic | avif
+
+  local ext
+  case "$fmt" in
+    heic) ext="heic" ;;
+    avif) ext="avif" ;;
+    *)    ext="jpg"  ;;
+  esac
+
+  local filename base output_file conflict_file tmp_output
+  filename="$(basename "$input_file")"
+  base="${filename%.*}"
+
+  mkdir -p "$output_dir"
+
+  output_file="${output_dir}/${base}.${ext}"
+  conflict_file="${output_dir}/${base}.convert.${ext}"
+  tmp_output="${output_dir}/${base}.tmp-convert.${ext}"
+
+  if [ -e "$output_file" ]; then
+    output_file="$conflict_file"
+  fi
+
+  if [ -e "$output_file" ]; then
+    echo "SKIP: $output_file"
+    return 0
+  fi
+
+  rm -f "$tmp_output"
+
+  local method
+
+  if [ "$fmt" = "jpeg" ]; then
+    # For JPEG: prefer extracting the full-res embedded JPEG the camera already
+    # baked in — zero re-encoding, zero quality loss.
+    # iPhone ProRAW always embeds one; many camera DNGs/NEFs do too.
+    if command -v exiftool >/dev/null 2>&1; then
+      exiftool -b -JpgFromRaw "$input_file" > "$tmp_output" 2>/dev/null
+      if [ -s "$tmp_output" ]; then
+        method="embedded"
+      else
+        exiftool -b -PreviewImage "$input_file" > "$tmp_output" 2>/dev/null
+        [ -s "$tmp_output" ] && method="preview"
+      fi
+    fi
+  fi
+
+  # For HEIC/AVIF (or JPEG when no embedded found): sips decodes RAW directly.
+  # RAW→HEIC via sips is better quality than embedded JPEG→HEIC (avoids double encode).
+  if [ -z "$method" ]; then
+    if ! command -v sips >/dev/null 2>&1; then
+      echo "FAIL: sips not found (required for $fmt output)"
+      rm -f "$tmp_output"
+      return 1
+    fi
+    sips \
+      -s format "$fmt" \
+      -s formatOptions best \
+      "$input_file" \
+      --out "$tmp_output" >/dev/null 2>&1
+    [ -s "$tmp_output" ] && method="sips"
+  fi
+
+  if [ -z "$method" ] || [ ! -s "$tmp_output" ]; then
+    rm -f "$tmp_output"
+    echo "FAIL: $input_file"
+    return 1
+  fi
+
+  # Copy EXIF/GPS back — embedded extracts and sips can both drop some tags
+  if command -v exiftool >/dev/null 2>&1; then
+    exiftool -quiet -overwrite_original \
+      -TagsFromFile "$input_file" -All:All -GPS:All \
+      "$tmp_output" 2>/dev/null
+  fi
+
+  mv "$tmp_output" "$output_file"
+  echo "OK [$method → $ext]: $output_file"
+  return 0
+}
+
+raw2jpg() {
+  # Convert RAW image files to JPEG, HEIC, or AVIF using macOS sips.
+  #
+  # Conversion strategy per format:
+  #   jpeg  – extracts full-res embedded JPEG from DNG (zero re-encoding) if
+  #            available; falls back to sips RAW decode.
+  #   heic  – sips decodes RAW directly to HEIC (RAW→HEIC beats JPEG→HEIC).
+  #   avif  – sips decodes RAW directly to AVIF.
+  #
+  # Quality comparison (same visual quality):
+  #   jpeg ~100%  |  heic ~50%  |  avif ~40%  (relative file size)
+  #
+  # Usage:
+  #   raw2jpg [--format heic|avif|jpeg] [--jobs N] src_dir dest_dir
+  #   raw2jpg [--format heic|avif|jpeg] [--jobs N] src_dir
+  #   raw2jpg [--format heic|avif|jpeg] file.dng
+  #
+  # Defaults: --format jpeg  --jobs 4
+  # Supports: DNG NEF CR2 CR3 ARW RAF RW2 ORF (case-insensitive)
+  # No recursion. Requires macOS sips.
+  # Copies EXIF/GPS via exiftool if installed (brew install exiftool).
+
+  local jobs=4 fmt="jpeg"
+  local args=()
+
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --jobs)    jobs="$2"; shift 2 ;;
+      --jobs=*)  jobs="${1#--jobs=}"; shift ;;
+      --format)  fmt="$2"; shift 2 ;;
+      --format=*)fmt="${1#--format=}"; shift ;;
+      *)         args+=("$1"); shift ;;
+    esac
+  done
+  set -- "${args[@]}"
+
+  case "$fmt" in
+    jpg|jpeg) fmt="jpeg" ;;
+    heic|avif) ;;
+    *)
+      echo "ERROR: unsupported format '$fmt'. Use: jpeg, heic, avif"
+      return 1 ;;
+  esac
+
+  if ! command -v sips >/dev/null 2>&1; then
+    echo "ERROR: sips not found. This function requires macOS."
+    return 1
+  fi
+
+  if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage:"
+    echo "  raw2jpg [--format heic|avif|jpeg] [--jobs N] src_dir dest_dir"
+    echo "  raw2jpg [--format heic|avif|jpeg] [--jobs N] src_dir"
+    echo "  raw2jpg [--format heic|avif|jpeg] file.dng"
+    return 1
+  fi
+
+  local src="$1"
+  local dest="${2:-}"
+
+  # CASE #3: single file
+  if [ -f "$src" ]; then
+    if ! _raw2jpg_is_raw "$src"; then
+      echo "ERROR: Not a supported RAW file: $src"
+      echo "Supported: DNG NEF CR2 CR3 ARW RAF RW2 ORF"
+      return 1
+    fi
+    _raw2jpg_convert "$src" "$(dirname "$src")" "$fmt"
+    return $?
+  fi
+
+  # CASE #1 and #2: directory
+  if [ ! -d "$src" ]; then
+    echo "ERROR: Source is not a valid file or directory: $src"
+    return 1
+  fi
+
+  [ -z "$dest" ] && dest="$src"
+  mkdir -p "$dest"
+
+  local files=() f
+  for f in "$src"/*(.N); do
+    _raw2jpg_is_raw "$f" && files+=("$f")
+  done
+
+  if [ "${#files[@]}" -eq 0 ]; then
+    echo "No RAW files found in: $src"
+    echo "Supported: DNG NEF CR2 CR3 ARW RAF RW2 ORF"
+    return 0
+  fi
+
+  echo "Found ${#files[@]} file(s) → $fmt | up to $jobs parallel job(s)..."
+
+  local pids=() failed=0
+
+  _raw2jpg_wait_slot() {
+    while [ "${#pids[@]}" -ge "$jobs" ]; do
+      local alive=() p
+      for p in "${pids[@]}"; do
+        kill -0 "$p" 2>/dev/null && alive+=("$p") || wait "$p" 2>/dev/null || true
+      done
+      pids=("${alive[@]}")
+      [ "${#pids[@]}" -ge "$jobs" ] && sleep 0.1
+    done
+  }
+
+  for f in "${files[@]}"; do
+    _raw2jpg_wait_slot
+    _raw2jpg_convert "$f" "$dest" "$fmt" &
+    pids+=($!)
+  done
+
+  local p
+  for p in "${pids[@]}"; do
+    wait "$p" || failed=1
+  done
+
+  echo "---"
+  [ "$failed" -ne 0 ] && { echo "Done with some failures."; return 1; }
+  echo "Done. ${#files[@]} file(s) processed."
+  return 0
+}
