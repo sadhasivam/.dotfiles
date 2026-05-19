@@ -1,0 +1,12 @@
+nr() {
+  if [ -z "$FN" ]; then
+    echo "ERROR: FN is not set."
+    return 1
+  fi
+
+  f2 -f '(?i).*\.(heic|jpg|jpeg|png|mov|mp4|nef|dng|avi)$' \
+    -r "$FN" \
+    --sort time_var \
+    --sort-var '{xt.DateTimeOriginal}' \
+    "$@"
+}

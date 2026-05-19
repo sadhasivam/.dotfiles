@@ -27,6 +27,7 @@ brew 'glow'                # Markdown renderer for terminal
 brew 'direnv'              # Auto-load environment variables per directory
 brew 'visidata'            # CLI to view tabular data like excel
 brew 'f2'                  # File Renaming Utility
+brew 'bitwarden-cli'       # BitWarden Cli
 
 # === Secrets & Encryption ===
 brew 'pass'
@@ -111,6 +112,9 @@ cask 'codex'
 ## Security
 brew 'trivy'
 
-# Photography Tools
-brew 'exiftool'
+## Developer Tools
+brew 'cue'
 
+# Photography Tools
+brew 'exiftool'                           # image metadata
+brew 'czkawka'                            # duplicate image finder(rust)  

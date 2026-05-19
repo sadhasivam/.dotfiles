@@ -43,6 +43,7 @@ source $DOTFILES/fn/functions
 source $DOTFILES/fn/agam
 source $DOTFILES/fn/cloud
 source $DOTFILES/fn/media
+source $DOTFILES/fn/f2-utils
 
 if [ -f $DOTFILES/.aliases.work ]; then
   source $DOTFILES/.aliases.work
