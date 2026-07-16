@@ -94,4 +94,6 @@
   },
   "claudeCode.preferredLocation": "panel",
   "python.languageServer": "Default",
+  "makefile.configureOnOpen": false,
+  "go.toolsManagement.autoUpdate": true,
 }

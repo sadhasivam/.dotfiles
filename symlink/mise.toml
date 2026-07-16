@@ -22,7 +22,7 @@ bun = "latest"      # Fast all-in-one JS runtime (includes bundler, test runner,
 deno = "latest"     # Secure TypeScript/JavaScript runtime
 
 # Java ecosystem
-java = "25"
+java = "26"
 maven = "latest"
 gradle = "9.4.1"
 
