@@ -94,6 +94,13 @@
   },
   "claudeCode.preferredLocation": "panel",
   "python.languageServer": "Default",
+<<<<<<< Updated upstream
   "makefile.configureOnOpen": false,
   "go.toolsManagement.autoUpdate": true,
+||||||| Stash base
+=======
+  "gitlens.advanced.messages": {
+    "suppressIntegrationDisconnectedTooManyFailedRequestsWarning": true
+  },
+>>>>>>> Stashed changes
 }

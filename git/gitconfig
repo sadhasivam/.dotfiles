@@ -21,6 +21,7 @@
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore_global
     pager = delta
+	hooksPath = /Users/sjayabalaganesan/.dotfiles/git/hooks
 	# hooksPath is set dynamically by install/macos.sh
 
 [pull]

@@ -1,121 +1,128 @@
-# === Homebrew Taps ===
-# (Fonts are now in core Homebrew - no tap needed)
+# === Third-party Homebrew Trust ===
+# Trust only the named formulae, not every item in these taps.
+tap "derailed/k9s", trusted: {
+  formula: "k9s"
+}
+
+tap "bufbuild/buf", trusted: {
+  formula: "buf"
+}
 
 # === Shell & Terminal Utilities ===
-brew 'zsh-syntax-highlighting'
-brew 'bash'                # Latest Bash version
-brew 'coreutils'           # GNU core utilities, newer than macOS default
-brew 'grep'
-brew 'tree'
-brew 'htop'
-brew 'btop'                # Modern system monitor (better than htop)
-brew 'nmap'
-brew 'wget'
-brew 'mole'
-cask 'mitmproxy'
+brew "zsh-syntax-highlighting"
+brew "bash"                                      # Latest Bash version
+brew "coreutils"                                 # GNU core utilities
+brew "grep"
+brew "tree"
+brew "htop"
+brew "btop"                                      # Modern system monitor
+brew "nmap"
+brew "wget"
+brew "mole"
+cask "mitmproxy"
 
 # === Modern CLI Tools ===
-brew 'eza'                 # Modern ls replacement (colorful, git-aware)
-brew 'bat'                 # cat with syntax highlighting
-brew 'ripgrep'             # Faster grep (rg command)
-brew 'fd'                  # Faster, user-friendly find
-brew 'fzf'                 # Fuzzy finder (essential productivity tool)
-brew 'zoxide'              # Smarter cd (tracks frecency)
-brew 'delta'               # Better git diff viewer
-brew 'httpie'              # Better curl for APIs (http command)
-brew 'glow'                # Markdown renderer for terminal
-brew 'direnv'              # Auto-load environment variables per directory
-brew 'visidata'            # CLI to view tabular data like excel
-brew 'f2'                  # File Renaming Utility
-brew 'bitwarden-cli'       # BitWarden Cli
+brew "eza"                                       # Modern ls replacement
+brew "bat"                                       # cat with syntax highlighting
+brew "ripgrep"                                   # Faster grep
+brew "fd"                                        # User-friendly find
+brew "fzf"                                       # Fuzzy finder
+brew "zoxide"                                    # Smarter cd
+brew "delta"                                     # Better Git diff viewer
+brew "httpie"                                    # HTTP client
+brew "glow"                                      # Markdown renderer
+brew "direnv"                                    # Directory environment variables
+brew "visidata"                                  # Tabular-data viewer
+brew "f2"                                        # File-renaming utility
+brew "bitwarden-cli"                             # Bitwarden CLI
 
 # === Secrets & Encryption ===
-brew 'pass'
-brew 'gpg'
-brew 'gnupg'
-brew 'git-crypt'
+brew "pass"
+brew "gpg"
+brew "gnupg"
+brew "git-crypt"
 
-# === Networking / Certs ===
-brew 'mkcert'              # Locally trusted development certificates
-brew 'nss'                 # Needed for Firefox with mkcert
-brew 'wifi-password'       # Quickly retrieve saved Wi-Fi passwords
+# === Networking / Certificates ===
+brew "mkcert"                                    # Local development certificates
+brew "nss"                                       # Firefox support for mkcert
+brew "wifi-password"                             # Retrieve saved Wi-Fi passwords
 
-# === Dev Tools: Git & VCS ===
-brew 'git'
-brew 'subversion'                 # Required by some font installers
-brew 'jq'                  # JSON processor
+# === Git & Version Control ===
+brew "git"
+brew "subversion"
+brew "jq"                                        # JSON processor
 
 # === Cloud CLI Tools ===
-brew 'awscli'
-brew 'azure-cli'
-cask 'google-cloud-sdk'
+brew "awscli"
+brew "azure-cli"
+cask "gcloud-cli"
 
-cask 'orbstack'            # Lightweight Docker Desktop replacement
+# === Containers & Kubernetes ===
+cask "orbstack"                                  # Docker Desktop alternative
 
-brew 'lazydocker'          # Terminal UI for Docker
-brew 'kubectl'             # K8s CLI
-brew 'kubectx'             # Switch between K8s contexts/namespaces (includes kubens)
-brew 'k9s'                 # Kubernetes TUI (better than kubectl alone)
-brew 'stern'               # Multi-pod log tailing for K8s
-brew 'helm'                # Kubernetes package manager
-brew 'kustomize'           # Kubernetes config management
-
+brew "lazydocker"                                # Docker terminal UI
+brew "kubectl"                                   # Kubernetes CLI
+brew "kubectx"                                   # Context and namespace switching
+brew "derailed/k9s/k9s"                          # Trusted above at formula level
+brew "stern"                                     # Multi-pod log tailing
+brew "helm"                                      # Kubernetes package manager
+brew "kustomize"                                 # Kubernetes configuration management
 
 # === Terraform & IaC Toolchain ===
-brew 'tfenv'               # Terraform version manager
-brew 'tfsec'               # Security scanner for Terraform
-brew 'checkov'             # IaC static analysis
-brew 'tflint'              # Terraform linter
-brew 'infracost'           # Cost estimation for Terraform plans
-brew 'terrascan'           # Policy as code & security scanning
-brew 'graphviz'            # Used with terraform graph
-brew 'terraform-docs'      # Generate Terraform modules documentation in various formats
+brew "tfenv"                                     # Terraform version manager
+brew "tfsec"                                     # Terraform security scanner
+brew "checkov"                                   # IaC static analysis
+brew "tflint"                                    # Terraform linter
+brew "infracost"                                 # Cost estimation
+brew "terrascan"                                 # Policy and security scanning
+brew "graphviz"                                  # Used with terraform graph
+brew "terraform-docs"                            # Terraform documentation generator
 
-# Optional Terraform Tools
-# brew 'blast-radius'      # Visualize Terraform graphs (interactive)
-# brew 'sops'              # Secrets management
-# brew 'age'               # Modern encryption tool for use with sops
+# Optional Terraform tools
+# brew "blast-radius"
+# brew "sops"
+# brew "age"
 
 # === Programming Languages & Build Tools ===
-brew 'go'
-brew 'rustup'
-brew 'uv'                  # Python package manager (faster than pip)
-brew 'ruff'                # Fast Python linter/formatter (replaces black+flake8+isort)
-brew 'pipx'                # Install Python CLI tools in isolated environments
-brew 'mise'                 # polygot version manager for python, node, java
-brew 'lazygit'             # Terminal UI for git
+brew "go"
+brew "rustup"
+brew "uv"                                        # Python package manager
+brew "ruff"                                      # Python linter and formatter
+brew "pipx"                                      # Isolated Python applications
+brew "mise"                                      # Polyglot runtime manager
+brew "lazygit"                                   # Git terminal UI
 
-# cask 'openjdk@21'          # Java JDK 21 via Cask
+# cask "openjdk@21"
 
-# Database
-brew 'duckdb'
-brew 'sqlite'
+# === Databases ===
+brew "duckdb"
+brew "sqlite"
 
-# === Media / Misc ===
-brew 'ffmpeg'
-brew 'caddy'               # HTTP server with automatic HTTPS
+# === Media & Miscellaneous ===
+brew "ffmpeg"
+brew "caddy"                                     # HTTP server with automatic HTTPS
 
 # === Fonts ===
-cask 'font-jetbrains-mono-nerd-font'  # JetBrains Mono with icons (for eza, etc.)
-cask 'font-fira-code-nerd-font'       # Fira Code with icons
-cask 'font-hack-nerd-font'            # Hack with icons
-cask 'font-monaspice-nerd-font'       # Monaspace with icons (renamed in Homebrew)
+cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-monaspice-nerd-font"
 
-# === DevTools ===
-brew 'protobuf'
-brew 'bufbuild/buf/buf'               # Modern ProtoBuf tool 
+# === Protobuf Tools ===
+brew "protobuf"
+brew "bufbuild/buf/buf"                          # Trusted above at formula level
 
-# AI
-cask 'claude-code'
-cask 'codex'
+# === AI Tools ===
+cask "claude-code"
+cask "codex"
 
-# Architecture as OS Tools
-## Security
-brew 'trivy'
+# === Security Tools ===
+brew "trivy"
 
-## Developer Tools
-brew 'cue'
+# === Architecture & Developer Tools ===
+brew "cue"                                       # Official homebrew/core formula
+brew "croc"
 
-# Photography Tools
-brew 'exiftool'                           # image metadata
-brew 'czkawka'                            # duplicate image finder(rust)  
+# === Photography Tools ===
+brew "exiftool"                                  # Image metadata
+brew "czkawka"                                   # Duplicate-file finder
