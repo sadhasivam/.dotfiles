@@ -50,7 +50,7 @@ log "Verifying installed tools..."
 mise current || true
 
 log "Enabling corepack for package.json 'packageManager' field support..."
-mise exec -- corepack enable
+# mise exec -- corepack enable
 
 log "✅ mise bootstrap complete!"
 log "   All runtime versions are managed in: symlink/mise.toml"

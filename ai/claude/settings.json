@@ -107,6 +107,7 @@
       "/Users/sadhasivam/Jawn/Code/texture/.github"
     ]
   },
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -131,5 +132,7 @@
     "skill-creator@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
-  }
+  },
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true
 }
