@@ -9,48 +9,9 @@ DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 
 echo "🔍 Detected architecture: $ARCH"
 
-# === 1. Install Oh My Zsh if missing ===
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "⚙️ Installing Oh My Zsh..."
-  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
-
-# === 2. Install Homebrew ===
-if ! command -v brew >/dev/null 2>&1; then
-  echo "🍺 Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-  if [[ "$ARCH" == "arm64" ]]; then
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    echo 'eval "$(/usr/local/bin/brew shellenv)"' >> "$HOME/.zprofile"
-    eval "$(/usr/local/bin/brew shellenv)"
-  fi
-fi
-
-# === 3. Brew Update & Tap Bundle ===
-echo "🔄 Updating Homebrew..."
-brew update
-
-if ! brew bundle check --file="$DOTFILES/install/Brewfile"; then
-  echo "📦 Installing Brew bundle..."
-  brew bundle --file="$DOTFILES/install/Brewfile"
-else
-  echo "✅ Brew bundle already satisfied."
-fi
-
-echo "🧰 Bootstrapping runtimes via mise..."
-# === 4. Setup Node ===
-bash "$DOTFILES/install/bootstrap-mise.sh"
-
-echo "✅ mise bootstrap complete"
-
-# === 5. Symlink Configs ===
-echo "🔗 Setting up dotfiles..."
-
+# === Helper: symlink with backup ===
+# Defined up front: the Homebrew trust store must be linked before `brew bundle`
+# runs, which happens well before the main config-linking section below.
 link_file() {
   local src="$1"
   local dest="$2"
@@ -102,6 +63,68 @@ link_file() {
   ln -s "$src" "$dest"
 }
 
+# === 1. Install Oh My Zsh if missing ===
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "⚙️ Installing Oh My Zsh..."
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+
+# === 2. Install Homebrew ===
+if ! command -v brew >/dev/null 2>&1; then
+  echo "🍺 Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if [[ "$ARCH" == "arm64" ]]; then
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    echo 'eval "$(/usr/local/bin/brew shellenv)"' >> "$HOME/.zprofile"
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+# === 3. Homebrew Trust Store ===
+# Homebrew 7+ refuses to load formulae from non-official taps until they are
+# trusted. This must be linked BEFORE any `brew bundle`/`brew ... check` call,
+# otherwise third-party formulae (bufbuild, dbt-labs) abort the run.
+echo "🔐 Linking Homebrew trust store..."
+
+# Ask Homebrew where it expects the file (honours HOMEBREW_USER_CONFIG_HOME /
+# XDG_CONFIG_HOME); fall back to the documented default if that ever fails.
+TRUST_FILE="$(brew ruby -e 'puts Homebrew::Trust.trust_file' 2>/dev/null || true)"
+TRUST_FILE="${TRUST_FILE:-$HOME/.homebrew/trust.json}"
+
+mkdir -p "$(dirname "$TRUST_FILE")"
+link_file "$DOTFILES/symlink/homebrew-trust.json" "$TRUST_FILE"
+
+# === 4. Brew Update & Tap Bundle ===
+echo "🔄 Updating Homebrew..."
+brew update
+
+if ! brew bundle check --file="$DOTFILES/install/Brewfile"; then
+  echo "📦 Installing Brew bundle..."
+  brew bundle --file="$DOTFILES/install/Brewfile"
+else
+  echo "✅ Brew bundle already satisfied."
+fi
+
+# Remove anything installed but no longer declared in the Brewfile. This also
+# rewrites the trust store from the Brewfile's `trusted:` options, so every
+# third-party formula there must carry `trusted: true` or it gets untrusted.
+echo "🧹 Pruning packages not declared in the Brewfile..."
+brew bundle cleanup --force --file="$DOTFILES/install/Brewfile"
+
+echo "🧰 Bootstrapping runtimes via mise..."
+# === 5. Setup Node ===
+bash "$DOTFILES/install/bootstrap-mise.sh"
+
+echo "✅ mise bootstrap complete"
+
+# === 6. Symlink Configs ===
+echo "🔗 Setting up dotfiles..."
+
 link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
 link_file "$DOTFILES/symlink/bashrc" "$HOME/.bashrc"
 link_file "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
@@ -151,7 +174,7 @@ else
   echo "VS Code not installed ❌ - skipping symlink"
 fi
 
-# === 5. Final Touches ===
+# === 7. Final Touches ===
 echo "⬆️ Upgrading all Brew packages..."
 brew upgrade
 

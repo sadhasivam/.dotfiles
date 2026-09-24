@@ -10,10 +10,10 @@
 
 [tools]
 # Python
-python = "3.14.7"
+python = "latest"
 
 # Node.js ecosystem
-node = "26.8.1"
+node = "latest"
 pnpm = "latest"
 yarn = "latest"
 
@@ -24,7 +24,7 @@ deno = "latest"     # Secure TypeScript/JavaScript runtime
 # Java ecosystem
 java = "27"
 maven = "latest"
-gradle = "9.4.1"
+gradle = "9.8.0"
 
 # Additional languages (managed by mise, not Homebrew)
 # Uncomment to enable:

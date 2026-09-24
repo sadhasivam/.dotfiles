@@ -8,6 +8,10 @@ tap "bufbuild/buf", trusted: {
   formula: "buf"
 }
 
+tap "dbt-labs/dbt", trusted: {
+  formula: "dbt"
+}
+
 # === Shell & Terminal Utilities ===
 brew "zsh-syntax-highlighting"
 brew "bash"                                      # Latest Bash version
@@ -55,11 +59,12 @@ brew "jq"                                        # JSON processor
 # === Cloud CLI Tools ===
 brew "awscli"
 brew "azure-cli"
-cask "gcloud-cli"
+cask "gcloud-cli"                                # Renamed from google-cloud-sdk
 
 # === Containers & Kubernetes ===
 cask "orbstack"                                  # Docker Desktop alternative
 
+brew "hadolint"                                  # Dockerfile linter
 brew "lazydocker"                                # Docker terminal UI
 brew "kubectl"                                   # Kubernetes CLI
 brew "kubectx"                                   # Context and namespace switching
@@ -122,6 +127,7 @@ brew "trivy"
 # === Architecture & Developer Tools ===
 brew "cue"                                       # Official homebrew/core formula
 brew "croc"
+brew "dbt-labs/dbt/dbt"                          # dbt v2/Fusion; trusted above
 
 # === Photography Tools ===
 brew "exiftool"                                  # Image metadata

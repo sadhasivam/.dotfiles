@@ -1,0 +1,7 @@
+{
+  "trustedformulae": [
+    "bufbuild/buf/buf",
+    "dbt-labs/dbt/dbt",
+    "derailed/k9s/k9s"
+  ]
+}

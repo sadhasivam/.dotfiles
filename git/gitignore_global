@@ -471,3 +471,5 @@ zsdoc/data
 
 # Local git config (user-specific, not shared in dotfiles)
 .gitconfig.local
+
+**/.claude/settings.local.json
