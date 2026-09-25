@@ -110,11 +110,19 @@ else
   echo "✅ Brew bundle already satisfied."
 fi
 
-# Remove anything installed but no longer declared in the Brewfile. This also
-# rewrites the trust store from the Brewfile's `trusted:` options, so every
-# third-party formula there must carry `trusted: true` or it gets untrusted.
+# Remove anything installed but no longer declared in the Brewfile.
+#
+# Caveat: `cleanup --force` also resets the trust store to whatever the Brewfile
+# declares via `trusted:` options. We deliberately keep trust in
+# symlink/homebrew-trust.json instead, so cleanup would blank it (and, because
+# $TRUST_FILE is a symlink, blank the tracked file too). Snapshot it and put it
+# back afterwards -- later steps (`brew upgrade`) need the taps trusted.
 echo "🧹 Pruning packages not declared in the Brewfile..."
+TRUST_BACKUP="$(mktemp)"
+cp "$TRUST_FILE" "$TRUST_BACKUP"
 brew bundle cleanup --force --file="$DOTFILES/install/Brewfile"
+cp "$TRUST_BACKUP" "$TRUST_FILE"   # writes through the symlink
+rm -f "$TRUST_BACKUP"
 
 echo "🧰 Bootstrapping runtimes via mise..."
 # === 5. Setup Node ===
