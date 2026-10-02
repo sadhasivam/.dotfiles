@@ -125,7 +125,9 @@ cp "$TRUST_BACKUP" "$TRUST_FILE"   # writes through the symlink
 rm -f "$TRUST_BACKUP"
 
 echo "🧰 Bootstrapping runtimes via mise..."
-# === 5. Setup Node ===
+# === 5. Link mise config before installing runtimes ===
+mkdir -p "$HOME/.config/mise"
+link_file "$DOTFILES/symlink/mise.toml" "$HOME/.config/mise/config.toml"
 bash "$DOTFILES/install/bootstrap-mise.sh"
 
 echo "✅ mise bootstrap complete"
@@ -140,7 +142,6 @@ link_file "$DOTFILES/symlink/pnpmrc" "$HOME/.pnpmrc"
 link_file "$DOTFILES/symlink/curlrc" "$HOME/.curlrc"
 link_file "$DOTFILES/symlink/editorconfig" "$HOME/.editorconfig"
 mkdir -p "$HOME/.vim" && link_file "$DOTFILES/symlink/vimrc" "$HOME/.vim/.vimrc"
-mkdir -p "$HOME/.config/mise" && link_file "$DOTFILES/symlink/mise.toml" "$HOME/.config/mise/config.toml"
 
 # Claude Code configuration
 mkdir -p "$HOME/.claude"

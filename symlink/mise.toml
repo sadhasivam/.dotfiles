@@ -1,6 +1,6 @@
 # mise global configuration
 # Symlinked to ~/.config/mise/config.toml
-# mise auto-installs these versions when shell starts (via mise activate in zshrc)
+# Installed by bootstrap-mise.sh; activated in new shells via zshrc.
 #
 # Note: Multiple JS runtimes (Node, Bun, Deno) can coexist without conflicts.
 # Each has its own binaries and package managers:
@@ -24,7 +24,7 @@ deno = "latest"     # Secure TypeScript/JavaScript runtime
 # Java ecosystem
 java = "27"
 maven = "latest"
-gradle = "9.8.0"
+gradle = "latest"
 
 # Additional languages (managed by mise, not Homebrew)
 # Uncomment to enable:
@@ -32,7 +32,7 @@ gradle = "9.8.0"
 # rust = "latest"
 
 [settings]
-# Auto-install missing tools on shell activation
+# Allow automatic installation when supported by mise commands
 auto_install = true
 
 # Use all CPU cores for parallel installs

@@ -36,6 +36,9 @@ EOF
 log "Checking prerequisites..."
 require_cmd mise
 
+# Bootstrap the home configuration, independent of the caller's project overrides.
+cd "$HOME"
+
 # Activate mise in this script session
 eval "$(mise activate bash)"
 hash -r
