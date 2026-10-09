@@ -1,7 +1,12 @@
-# User-specific settings (name, email) are loaded from ~/.gitconfig.local
-# This file is not tracked in dotfiles, keeping the repo portable
-[include]
-    path = ~/.gitconfig.local
+# Portable git settings, tracked in dotfiles.
+#
+# Anything machine-specific -- identity, corporate CA paths, SSH key routing,
+# absolute paths -- belongs in ~/.gitconfig.local, which is gitignored and
+# included at the BOTTOM of this file so its values win on conflict.
+#
+# Do NOT run `git config --global ...` to add settings here: ~/.gitconfig is a
+# symlink to this tracked file, so those writes land in the repo. Use
+# `git config --file ~/.gitconfig.local ...` instead.
 
 [color]
     branch = auto
@@ -21,14 +26,12 @@
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore_global
     pager = delta
-	hooksPath = /Users/sjayabalaganesan/.dotfiles/git/hooks
-	# hooksPath is set dynamically by install/macos.sh
+    # Default assumes the repo is at ~/.dotfiles; install/macos.sh writes the
+    # real path to ~/.gitconfig.local, which overrides this.
+    hooksPath = ~/.dotfiles/git/hooks
 
 [pull]
     rebase = true
-
-[url "git@github.com:"]
-    insteadOf = https://github.com
 
 [init]
     defaultBranch = main
@@ -68,3 +71,15 @@
     light = false
     side-by-side = true
     line-numbers = true
+
+# Homebrew and its taps clone themselves over https and need no auth at all.
+# Mapping this prefix to itself wins on longest-match, opting brew out of any
+# https -> SSH rewrite a machine may define in ~/.gitconfig.local. Keeps
+# `brew update` working on a machine whose default GitHub key is restricted.
+[url "https://github.com/Homebrew/"]
+    insteadOf = https://github.com/Homebrew/
+
+# Machine-local overrides. Must stay LAST: git takes the final value of a
+# single-valued key, so this lets ~/.gitconfig.local override anything above.
+[include]
+    path = ~/.gitconfig.local

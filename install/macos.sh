@@ -137,7 +137,16 @@ echo "🔗 Setting up dotfiles..."
 
 link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
 link_file "$DOTFILES/symlink/bashrc" "$HOME/.bashrc"
-link_file "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
+# ~/.npmrc is SEEDED, not symlinked: `npm config set` / `pnpm config set`
+# write to it, so a symlink would push machine-local values -- including auth
+# tokens -- into the tracked repo. Seed once, then leave it alone.
+if [ ! -e "$HOME/.npmrc" ]; then
+  cp "$DOTFILES/symlink/npmrc" "$HOME/.npmrc"
+  echo "✅ Seeded ~/.npmrc from template (machine-local, not tracked)"
+else
+  echo "✅ ~/.npmrc already exists (left as-is)"
+fi
+
 link_file "$DOTFILES/symlink/pnpmrc" "$HOME/.pnpmrc"
 link_file "$DOTFILES/symlink/curlrc" "$HOME/.curlrc"
 link_file "$DOTFILES/symlink/editorconfig" "$HOME/.editorconfig"
@@ -151,9 +160,8 @@ link_file "$DOTFILES/ai/claude/hooks" "$HOME/.claude/hooks"
 # Git configuration
 link_file "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
 link_file "$DOTFILES/git/gitignore_global" "$HOME/.gitignore_global"
-git config --global core.hooksPath "$DOTFILES/git/hooks"
-
-# Create .gitconfig.local if it doesn't exist (for user-specific settings)
+# Create .gitconfig.local if it doesn't exist (for user-specific settings).
+# Must run BEFORE the hooksPath write below, which appends to this same file.
 if [ ! -f "$HOME/.gitconfig.local" ]; then
   echo "⚙️  Creating ~/.gitconfig.local for user-specific git config..."
   echo "Please enter your git user details:"
@@ -169,6 +177,12 @@ EOF
 else
   echo "✅ ~/.gitconfig.local already exists"
 fi
+
+# hooksPath is an absolute, machine-specific path, so it goes in the local
+# file. NOT `git config --global`: ~/.gitconfig is a symlink to the tracked
+# git/gitconfig, so a --global write would commit this machine's $HOME into
+# the dotfiles repo.
+git config --file "$HOME/.gitconfig.local" core.hooksPath "$DOTFILES/git/hooks"
 
 VSCODE_PATH="$HOME/Library/Application Support/Code/User"
 

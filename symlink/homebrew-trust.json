@@ -4,5 +4,8 @@
     "dbt-labs/dbt/dbt",
     "dbt-labs/dbt/dbt-core",
     "derailed/k9s/k9s"
+  ],
+  "trustedcasks": [
+    "terraform-linters/tap/tflint"
   ]
 }

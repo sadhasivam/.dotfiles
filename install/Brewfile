@@ -42,12 +42,13 @@ brew "wifi-password"                             # Retrieve saved Wi-Fi password
 
 # === Git & Version Control ===
 brew "git"
+brew "gh"                                        # GitHub CLI
 brew "subversion"
 brew "jq"                                        # JSON processor
 
 # === Cloud CLI Tools ===
 brew "awscli"
-brew "azure-cli"
+cask "azure-cli"                                 # Moved from formula to cask (Homebrew 7.0.9)
 cask "gcloud-cli"                                # Renamed from google-cloud-sdk
 
 # === Containers & Kubernetes ===
@@ -66,9 +67,9 @@ brew "kustomize"                                 # Kubernetes configuration mana
 brew "tfenv"                                     # Terraform version manager
 brew "tfsec"                                     # Terraform security scanner
 brew "checkov"                                   # IaC static analysis
-brew "tflint"                                    # Terraform linter
+cask "terraform-linters/tap/tflint"              # Terraform linter (dropped from core; vendor tap cask)
 brew "infracost"                                 # Cost estimation
-brew "terrascan"                                 # Policy and security scanning
+brew "terrascan"                                 # Policy and security scanning (upstream archived; brew disables 2027-05-23)
 brew "graphviz"                                  # Used with terraform graph
 brew "terraform-docs"                            # Terraform documentation generator
 
@@ -76,6 +77,9 @@ brew "terraform-docs"                            # Terraform documentation gener
 # brew "blast-radius"
 # brew "sops"
 # brew "age"
+
+# Network Tools 
+brew "rustnet"                                  # RustNet is a terminal network monitor that shows live TCP, UDP, and QUIC connections
 
 # === Programming Languages & Build Tools ===
 brew "go"

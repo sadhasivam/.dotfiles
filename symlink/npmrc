@@ -1,5 +1,12 @@
-
-# ~/.npmrc
+# Template for ~/.npmrc -- portable defaults only.
+#
+# install/macos.sh SEEDS ~/.npmrc from this file on first run; it is
+# deliberately NOT symlinked. `npm config set` / `pnpm config set` write to
+# ~/.npmrc, so a symlink here would push machine-local values -- and any auth
+# token -- straight into this repo.
+#
+# Machine-local values (corporate CA, registry tokens) belong in ~/.npmrc.
+# Changing a default here only affects machines seeded after the change.
 
 # 🔗 Use the public npm registry
 registry=https://registry.npmjs.org/
@@ -16,5 +23,6 @@ fetch-timeout=60000
 # 💡 Uncomment for scoped registries (e.g., GitHub or private)
 # @my-org:registry=https://npm.pkg.github.com/
 
-# 🔑 Auth token for private registry (scoped)
+# 🔑 Auth token for private registry (scoped). Keep real tokens in ~/.npmrc,
+# never here.
 # //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
