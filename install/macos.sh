@@ -85,21 +85,19 @@ if ! command -v brew >/dev/null 2>&1; then
   fi
 fi
 
-# === 3. Homebrew Trust Store ===
+# === 3. Brew Update & Tap Bundle ===
+#
 # Homebrew 7+ refuses to load formulae from non-official taps until they are
-# trusted. This must be linked BEFORE any `brew bundle`/`brew ... check` call,
-# otherwise third-party formulae (bufbuild, dbt-labs) abort the run.
-echo "🔐 Linking Homebrew trust store..."
-
-# Ask Homebrew where it expects the file (honours HOMEBREW_USER_CONFIG_HOME /
-# XDG_CONFIG_HOME); fall back to the documented default if that ever fails.
-TRUST_FILE="$(brew ruby -e 'puts Homebrew::Trust.trust_file' 2>/dev/null || true)"
-TRUST_FILE="${TRUST_FILE:-$HOME/.homebrew/trust.json}"
-
-mkdir -p "$(dirname "$TRUST_FILE")"
-link_file "$DOTFILES/symlink/homebrew-trust.json" "$TRUST_FILE"
-
-# === 4. Brew Update & Tap Bundle ===
+# trusted. Trust is declared in the Brewfile via `trusted: true`, which
+# `brew bundle` applies BEFORE it loads any entry -- so no trust store needs to
+# be seeded here first. We used to symlink a tracked homebrew-trust.json into
+# $HOME for that; it was redundant, and because `bundle cleanup --force`
+# rewrites the trust store, writing through that symlink clobbered the tracked
+# file. The Brewfile is now the single source of truth.
+#
+# `bundle check` does NOT apply trust, so on a fresh machine it reports the
+# third-party entries as unmet. That is harmless: it just routes into
+# `brew bundle` below, which trusts and installs them.
 echo "🔄 Updating Homebrew..."
 brew update
 
@@ -112,27 +110,25 @@ fi
 
 # Remove anything installed but no longer declared in the Brewfile.
 #
-# Caveat: `cleanup --force` also resets the trust store to whatever the Brewfile
-# declares via `trusted:` options. We deliberately keep trust in
-# symlink/homebrew-trust.json instead, so cleanup would blank it (and, because
-# $TRUST_FILE is a symlink, blank the tracked file too). Snapshot it and put it
-# back afterwards -- later steps (`brew upgrade`) need the taps trusted.
+# `cleanup --force` also resets the trust store to whatever the Brewfile
+# declares via `trusted:` options. Every third-party entry carries
+# `trusted: true`, so this is a no-op reset that writes back the same values,
+# and running it by hand is safe too.
+#
+# Do NOT reintroduce a snapshot-and-restore around this: it would put back trust
+# entries that cleanup correctly pruned for packages no longer in the Brewfile.
 echo "🧹 Pruning packages not declared in the Brewfile..."
-TRUST_BACKUP="$(mktemp)"
-cp "$TRUST_FILE" "$TRUST_BACKUP"
 brew bundle cleanup --force --file="$DOTFILES/install/Brewfile"
-cp "$TRUST_BACKUP" "$TRUST_FILE"   # writes through the symlink
-rm -f "$TRUST_BACKUP"
 
 echo "🧰 Bootstrapping runtimes via mise..."
-# === 5. Link mise config before installing runtimes ===
+# === 4. Link mise config before installing runtimes ===
 mkdir -p "$HOME/.config/mise"
 link_file "$DOTFILES/symlink/mise.toml" "$HOME/.config/mise/config.toml"
 bash "$DOTFILES/install/bootstrap-mise.sh"
 
 echo "✅ mise bootstrap complete"
 
-# === 6. Symlink Configs ===
+# === 5. Symlink Configs ===
 echo "🔗 Setting up dotfiles..."
 
 link_file "$DOTFILES/symlink/zshrc" "$HOME/.zshrc"
@@ -197,7 +193,7 @@ else
   echo "VS Code not installed ❌ - skipping symlink"
 fi
 
-# === 7. Final Touches ===
+# === 6. Final Touches ===
 echo "⬆️ Upgrading all Brew packages..."
 brew upgrade
 

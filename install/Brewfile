@@ -1,5 +1,12 @@
-# Third-party tap trust lives in symlink/homebrew-trust.json, not here.
 # Taps are added automatically from the fully-qualified formula names below.
+#
+# Third-party taps need trust (Homebrew 7+). This file is the SINGLE source of
+# truth for it: `brew bundle` applies `trusted: true` before loading any entry,
+# and `brew bundle cleanup --force` resets the trust store to exactly what is
+# declared here -- nothing else needs to seed it.
+#
+# So: add `trusted: true` to every new fully-qualified entry. Miss one and the
+# next cleanup silently untrusts it.
 
 # === Shell & Terminal Utilities ===
 brew "zsh-syntax-highlighting"
@@ -27,7 +34,8 @@ brew "glow"                                      # Markdown renderer
 brew "direnv"                                    # Directory environment variables
 brew "visidata"                                  # Tabular-data viewer
 brew "f2"                                        # File-renaming utility
-brew "bitwarden-cli"                             # Bitwarden CLI
+# brew "bitwarden-cli"                             # Bitwarden CLI
+brew "herdr"                                     # Terminal Multiplexer 
 
 # === Secrets & Encryption ===
 brew "pass"
@@ -58,7 +66,7 @@ brew "hadolint"                                  # Dockerfile linter
 brew "lazydocker"                                # Docker terminal UI
 brew "kubectl"                                   # Kubernetes CLI
 brew "kubectx"                                   # Context and namespace switching
-brew "derailed/k9s/k9s"                          # Kubernetes TUI
+brew "derailed/k9s/k9s", trusted: true           # Kubernetes TUI
 brew "stern"                                     # Multi-pod log tailing
 brew "helm"                                      # Kubernetes package manager
 brew "kustomize"                                 # Kubernetes configuration management
@@ -67,7 +75,7 @@ brew "kustomize"                                 # Kubernetes configuration mana
 brew "tfenv"                                     # Terraform version manager
 brew "tfsec"                                     # Terraform security scanner
 brew "checkov"                                   # IaC static analysis
-cask "terraform-linters/tap/tflint"              # Terraform linter (dropped from core; vendor tap cask)
+cask "terraform-linters/tap/tflint", trusted: true # Terraform linter (dropped from core; vendor tap cask)
 brew "infracost"                                 # Cost estimation
 brew "terrascan"                                 # Policy and security scanning (upstream archived; brew disables 2027-05-23)
 brew "graphviz"                                  # Used with terraform graph
@@ -108,7 +116,7 @@ cask "font-monaspice-nerd-font"
 
 # === Protobuf Tools ===
 brew "protobuf"
-brew "bufbuild/buf/buf"                          # Modern Protobuf tool
+brew "bufbuild/buf/buf", trusted: true           # Modern Protobuf tool
 
 # === AI Tools ===
 cask "claude-code"
@@ -120,7 +128,10 @@ brew "trivy"
 # === Architecture & Developer Tools ===
 brew "cue"                                       # Official homebrew/core formula
 brew "croc"
-brew "dbt-labs/dbt/dbt"                          # data build tool (v2/Fusion)
+# The Rust/Fusion engine, and the only dbt we want. The tap also ships
+# dbt-core (older, Python) which CONFLICTS with this -- both install a `dbt`
+# binary -- so it is deliberately neither installed nor trusted.
+brew "dbt-labs/dbt/dbt", trusted: true           # data build tool (v2/Fusion, Rust)
 
 # === Photography Tools ===
 brew "exiftool"                                  # Image metadata
