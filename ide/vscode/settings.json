@@ -102,4 +102,5 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "chat.mcp.gallery.enabled": true,
 }

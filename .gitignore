@@ -19,6 +19,8 @@ vscode/User/workspaceStorage
 
 # ignore secure files
 .aliases.work
+ai/claude/settings.json
 
 # ignore backup directory created by install scripts
 _backup/
+
